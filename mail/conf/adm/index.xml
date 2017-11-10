@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+    "http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts>
+	
+	<package name="Index" extends="struts-default" namespace="/adm">
+	
+		<action name="index" class="publicAction" method="index">
+			<result name="success">/adm/page/index/index.jsp</result>
+		</action>
+		
+		<action name="main" class="publicAction" method="main">
+			<result name="success">/adm/page/index/main.jsp</result>
+		</action>
+		
+		<action name="top" class="publicAction" method="top">
+			<result name="success">/adm/page/index/top.jsp</result>
+		</action>
+		
+ 		<action name="login" class="publicAction" method="login">
+			<result name="success">/adm/page/login/login.jsp</result>
+		</action>
+		
+		<action name="member" class="publicAction" method="member">
+			<result name="success">/adm/page/index/member.jsp</result>
+		</action>
+		
+		<action name="Security" class="publicAction" method="Security">
+			<result name="success">/adm/page/login/Security.jsp</result>
+		</action>
+		
+		<action name="exit" class="publicAction" method="exitSystem">
+			<result name="success" type="redirectAction">
+				login.mail
+			</result>
+		</action>
+
+	</package>
+	
+</struts>

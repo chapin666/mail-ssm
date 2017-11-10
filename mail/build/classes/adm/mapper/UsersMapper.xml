@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="adm.mapper.UsersMapper">
+	
+	<select id="checkUsersNameExist" parameterType="String" resultType="Users">
+		select t.* from user t where t.username=#{username}
+	</select>
+	
+	<select id="getUsers" parameterType="int" resultType="Users">
+		select t.* from user t where t.id=#{id}
+	</select>
+	
+	<select id="getSize" parameterType="Users" resultType="int">
+		select count(1) from user t,unit u where t.unid = u.id 
+		<if test="name != null and name != ''">
+			and t.unid in (${name})
+		</if>
+		<if test="username != null and username != ''">
+			and (t.name like '%${username}%' or t.username like '%${username}%')
+		</if>
+	</select>
+	
+	<select id="getUserByUnit" parameterType="Users" resultType="Users">
+		select * from (select t.*,u.name unitname,c.value domainname from user t,unit u,configinfo c 
+		where t.unid = u.id and c.id=t.domain 
+		<if test="name != null and name != ''">
+			and t.unid in (${name})
+		</if>
+		<if test="username != null and username != ''">
+			and (t.name like '%${username}%' or t.username like '%${username}%')
+		</if>
+         order by id desc)a limit #{start},#{end}
+	</select>
+	
+	<!-- 所有禁用用户 -->
+	<select id="getUserByStateUnit" parameterType="Users" resultType="Users">
+		select * from (select t.*,u.name unitname,c.value domainname from user t,unit u,configinfo c 
+		where t.unid = u.id and c.id=t.domain 
+		<if test="name != null and name != ''">
+			and t.unid in (${name})
+		</if>
+		<if test="username != null and username != ''">
+			and (t.name like '%${username}%' or t.username like '%${username}%')
+		</if>
+         and state = 2 order by id desc)a limit #{start},#{end}
+	</select>
+	
+
+	<update id="editUsers" parameterType="Users">
+		update user
+		<set>  
+			<if test="name!=null and name!='' ">name=#{name},</if>
+    	</set>
+        where id=#{id}
+	</update>
+	
+	<update id="editPass" parameterType="Users">
+		update user set pass=#{pass} where id=#{id}
+	</update>
+	
+</mapper>

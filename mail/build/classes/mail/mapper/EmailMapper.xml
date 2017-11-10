@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mail.mapper.EmailMapper">
+
+	<!-- 星标-->
+	<select id="getMainMailSize" parameterType="User" resultType="int">
+		select count(a.id)+(select count(b.id) from email_send b where b.frommail like '%${username}%' and b.ismain=1)+(select count(c.id) from email_drafts c where c.frommail like '%${username}%' and c.ismain=1)  from email_recv a where a.tomail like '%${username}%' and a.ismain=1
+	</select>
+	
+	
+	<!-- 星标 未读邮件-->
+	<select id="getMainMailSize1" parameterType="User" resultType="int">
+		select count(a.id)+(select count(b.id) from email_send b where b.frommail like '%${username}%' and b.ismain=1 and b.state = 0)+(select count(c.id) from email_drafts c where c.frommail like '%${username}%' and c.ismain=1 and c.state = 0)  from email_recv a where a.tomail like '%${username}%' and a.ismain=1 and a.state = 0
+	</select>
+	
+	
+	<select id="getMainMail" parameterType="User" resultType="Email">
+		select a.*,1 as boxtype from email_recv a  where a.tomail like '%${username}%' and a.ismain=1 union select b.id,b.mailid,b.frommail,b.tomail,b.time,b.ismain,b.state,2 from email_send b where b.frommail like '%${username}%' and b.ismain=1 union select c.id,-1,c.frommail,c.tomail,c.time,c.ismain,1,3 from email_drafts c where c.frommail like '%${username}%' and c.ismain=1 order by id desc limit #{start},#{end}
+	</select>
+	
+	<insert id="addEmail" parameterType="Email">
+		insert into email_send(mailid
+		<if test="fromname !=null and fromname !='' ">,fromname</if>
+		<if test="frommail !=null and frommail !='' ">,frommail</if>
+		<if test="toname !=null and toname !='' ">,toname</if>
+		<if test="tomail !=null and tomail !='' ">,tomail</if>
+		<if test="realsend !=null and realsend !='' ">,realsend</if>
+		<if test="copyto !=null and copyto !='' ">,copyto</if>
+		<if test="bcc !=null and bcc !='' ">,bcc</if>
+		<if test="time !=null and time !='' ">,time</if>
+		<if test="ismain !=null and ismain !=0 ">,ismain</if>
+		,state) values ('0'
+		<if test="fromname !=null and fromname !='' ">,#{fromname}</if>
+		<if test="frommail !=null and frommail !='' ">,#{frommail}</if>
+		<if test="toname !=null and toname !='' ">,#{toname}</if>
+		<if test="tomail !=null and tomail !='' ">,#{tomail}</if>
+		<if test="realsend !=null and realsend !='' ">,#{realsend}</if>
+		<if test="copyto !=null and copyto !='' ">,#{copyto}</if>
+		<if test="bcc !=null and bcc !='' ">,#{bcc}</if>
+		<if test="time !=null and time !='' ">,#{time}</if>
+		<if test="ismain !=null and ismain !=0 ">,#{ismain}</if>
+		,#{state})
+	</insert>
+	
+	<insert id="addNotice" parameterType="Notice">
+		insert into email_notice(author,tomail,title,content,time,state) values (#{author},#{tomail},#{title},#{content},#{time},#{state})
+	</insert>
+	
+	<!-- 添加草稿箱 -->
+	<insert id="addDraftsEmail" parameterType="EmailDrafts">
+		insert into email_drafts(frommail,tomail,title,mailfile,time) 
+		values (#{frommail}, #{tomail},#{title},#{mailfile},#{time})
+	</insert>
+	
+	<update id="editDraftsEmail" parameterType="EmailDrafts">
+		update email_drafts
+		<set>  
+			<if test="frommail != null and frommail != '' ">frommail=#{frommail},</if>
+			<if test="tomail != null and tomail != '' ">tomail=#{tomail},</if>
+			<if test="title != null and title != '' ">title=#{title},</if>
+			<if test="time != null and time != '' ">time=#{time},</if>
+			<if test="ismain != 0 ">ismain=#{ismain},</if>
+			<if test="see != 0 ">see=#{see},</if>
+    	</set>
+        where id=#{id}
+	</update>
+	
+	<update id="editNotice" parameterType="Notice">
+		update email_notice
+		<set>  
+			<if test="author != null and author != '' ">author=#{author},</if>
+			<if test="tomail != null and tomail != '' ">tomail=#{tomail},</if>
+			<if test="title != null and title != '' ">title=#{title},</if>
+			<if test="content != null and content != '' ">content=#{content},</if>
+			<if test="time != null and time != '' ">time=#{time},</if>
+			<if test="state != 0 ">state=#{state}</if>
+    	</set>
+        where id=#{id}
+	</update>
+	
+	<select id="getEmails" parameterType="Email" resultType="Email">
+		select * from email_recv
+		<trim prefix="WHERE" prefixOverrides="AND|OR">  
+			<if test="frommail != null and frommail != '' "> and frommail=#{frommail}</if>
+			<if test="tomail != null and tomail != '' "> and tomail=#{tomail}</if>
+			<if test="state != null and state != 0 "> and state=#{state}</if>
+			<if test="ismain != null and ismain != 0 "> and ismain=#{ismain}</if>
+			<if test="time != null and time != '' "> and time=#{time}</if>
+        </trim>
+	</select>
+	
+	<select id="getDraftsOrSend" parameterType="Email" resultType="Email">
+		select * from email_send
+		<trim prefix="WHERE" prefixOverrides="AND|OR">  
+			<if test="frommail != null and frommail != '' "> and frommail=#{frommail}</if>
+			<if test="tomail != null and tomail != '' "> and tomail=#{tomail}</if>
+			<if test="state != null "> and state=#{state}</if>
+			<if test="ismain != null "> and ismain=#{ismain}</if>
+			<if test="time != null and time != '' "> and time=#{time}</if>
+        </trim>
+	</select>
+	
+	<select id="getDEmail" parameterType="Email" resultType="Email">
+		select * from email_recv where id=#{id} and mailid=#{mailid} and state=3
+	</select>
+	
+	<select id="getEmailDraftsId" resultType="String">
+		select Max(id) from email_drafts
+	</select>
+	
+	<select id="getNewsSize" parameterType="User" resultType="int">
+		select count(1) from email_notice
+	</select>
+	
+	<select id="getNews" parameterType="User" resultType="Notice">
+		select * from email_notice order by time desc limit #{start},#{end}
+	</select>
+	
+	<select id="getPreEmail" parameterType="User" resultType="Integer">
+		<if test="end == 1 ">
+			select id from email_recv where tomail like '%${username}%'  and id&lt;#{id} order by id desc limit 1
+		</if>
+		<if test="end == 2 ">
+			select id from email_send where frommail like '%${username}%'  and id&lt;#{id} order by id desc limit 1
+		</if>
+		<if test="end == 0 ">
+			select id from email_drafts where tomail like '%${username}%'  and id&lt;#{id} order by id desc limit 1
+		</if>
+	</select>
+	
+	<select id="getNextEmail" parameterType="User" resultType="Integer">
+		<if test="end == 1 ">
+			select id from email_recv where tomail like '%${username}%'  and id&gt;#{id} order by id asc limit 1
+		</if>
+		<if test="end == 2 ">
+			select id from email_send where frommail like '%${username}%'  and id&gt;#{id} order by id asc limit 1
+		</if>
+		<if test="end == 0 ">
+			select id from email_drafts where tomail like '%${username}%'  and id&gt;#{id} order by id asc limit 1
+		</if>
+	</select>
+	
+	<update id="editEmail" parameterType="Email">
+		update email_send
+		<set>  
+			<if test="fromname != null and fromname != '' ">fromname=#{fromname},</if>
+			<if test="frommail != null and frommail != '' ">frommail=#{frommail},</if>
+			<if test="toname != null and toname != '' ">toname=#{toname},</if>
+			<if test="tomail != null and tomail != '' ">tomail=#{tomail},</if>
+			<if test="state != null and state != 0 ">state=#{state},</if>
+			<if test="ismain != null ">ismain=#{ismain},</if>
+			<if test="time != null and time != '' ">time=#{time}</if>
+    	</set>
+        where id=#{id}
+	</update>
+	
+	<update id="editREmail" parameterType="Email">
+		update email_recv
+		<set>  
+			<if test="state != null and state != 0 ">state=#{state},</if>
+			<if test="ismain != null ">ismain=#{ismain},</if>
+    	</set>
+        where id=#{id}
+	</update>
+	
+	<update id="editDEmail" parameterType="Email">
+		update email_drafts
+		<set>  
+			<if test="ismain != null ">ismain=#{ismain},</if>
+    	</set>
+        where id=#{id}
+	</update>
+	
+	<update id="editEmails" parameterType="Email">
+		update email_send
+		<set>  
+			<if test="toname != null ">toname=#{toname},</if>
+			<if test="copyto != null ">copyto=#{copyto},</if>
+			<if test="bcc != null ">bcc=#{bcc},</if>
+			<if test="type != null and type != '' ">type=#{type},</if>
+    	</set>
+        where id=#{id}
+	</update>
+	
+	<delete id="deleteEmail" parameterType="String">
+		delete from email_recv where id in 
+		<foreach collection="array" item="ids"  open="(" separator="," close=")">  
+        	#{ids}  
+     	</foreach>
+	</delete>
+	
+	<delete id="deleteDrafts" parameterType="String">
+		delete from email_drafts where id in 
+		<foreach collection="array" item="ids"  open="(" separator="," close=")">  
+        	#{ids}  
+     	</foreach>
+	</delete>
+	
+	<delete id="delNews" parameterType="String">
+		delete from email_notice where id=#{_parameter} 
+	</delete>
+	
+	<delete id="delAllrecv" parameterType="String">
+		delete from email_recv
+	</delete>
+	
+	<delete id="delAllsend" parameterType="String">
+		delete from email_send
+	</delete>
+	
+	<delete id="delAlldatarecv" parameterType="String">
+		delete from emaildata_recv
+	</delete>
+	
+	<delete id="delAlldatasend" parameterType="String">
+		delete from emaildata_send
+	</delete>
+
+
+	<update id="updateReport" parameterType="Email">
+		update email_recv set state = 4
+		<trim prefix="WHERE" prefixOverrides="AND|OR">
+			<if test="checkboxs == 0">
+				id = #{id}
+			</if>
+			<if test="checkboxs == 1">
+				tomail = #{tomail} and frommail = #{frommail}
+			</if>
+		</trim>
+	</update>
+
+	<insert id="InsertSpamList" parameterType="Email">
+		insert into spamuser(user,reportuser) value(#{tomail},#{frommail})
+	</insert>
+	<insert id="InsertSpamListDomain" parameterType="Email">
+		insert into spamuser_domain(user,reportuser) value(#{tomail},#{frommail})
+	</insert>
+	
+	<!-- 这不是垃圾 -->
+	<update id="noRubMail" parameterType="String">
+		update email_recv set state = 1 where state = 4 and id in 
+		<foreach collection="array" item="ids"  open="(" separator="," close=")">  
+        	#{ids}  
+     	</foreach>     	
+	</update>
+	
+	<select id="SelectRecallMail" parameterType="Email"  resultType="Email">
+		select email_recv.state,email_recv.tomail from email_recv,email_send where email_send.id=#{id} and email_recv.mailid=email_send.mailid
+	</select>
+	
+	<delete id="Recall" parameterType="int">
+		delete from email_recv  where email_recv.mailid in (select email_send.mailid from email_send where email_send.id=#{id})
+	</delete>
+	
+
+	<select id="reciveEmail" parameterType="User" resultType="Email">
+	
+	SELECT * from email_recv b,emaildata_recv a where a.mailid = b.mailid and b.tomail like '%${username}%' and (b.state = #{phone} or b.state = #{stat}) order by 
+		<if test="orby eq 'time' ">time </if>
+		<if test="orby eq 'subject' ">subject </if>
+		<if test="orby eq 'frommail' ">frommail </if>
+		<if test="sortorder eq 'desc' ">desc</if>
+		<if test="sortorder eq 'asc' ">asc</if>  
+	limit #{start},#{end}
+	
+	</select>
+
+</mapper>

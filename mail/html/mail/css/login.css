@@ -1,0 +1,206 @@
+@CHARSET "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+	font-size: 12px;
+	font-family: "宋体";
+}
+
+body {
+    background: none repeat scroll 0 0 #FFFFFF;
+    color: #000000;
+    font-size: 12px;
+    line-height: 166.6%;
+    text-align: center;
+}
+
+.top {
+	padding: 0;
+    margin-top: -310px;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+}
+
+.head {
+	text-align: center;
+	height: 70px;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    width: 1000px;
+    z-index: 2;
+}
+.head img {
+	width: 196px;
+	height: 37px;
+	display: inline;
+	border: none;
+	float: left;
+	margin: 15px;
+}
+
+div.center {
+ 	width: 100%;
+	height: 480px;
+	background: url("/adm/images/login/loginbg.jpg") no-repeat center center;
+	margin: 0 auto;
+}	
+
+div.center div.content {
+	width: 800px;
+	height: 260px;
+	text-align: left;
+	margin: 0px auto;
+	padding: 80px 0;
+	
+}	
+div.center div.content .right {
+	width: 370px;
+	height: 260px;
+	float: right;
+}	
+.right .msg {
+	width: 370px;
+	height: auto;
+	float: left;
+	color: #c9d6e9;
+	line-height: 22px;
+}	
+.right .login {
+	width: 370px;
+	height: 340px;
+	float: left;
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #CFD6DC;
+    outline: 0 none;
+    position: relative;
+    margin-top: -40px;
+}
+.login h1 {
+	color: #0094DA;
+    font-size: 15px;
+    height: 28px;
+    overflow: hidden;
+    padding: 25px 25px 25px;
+}	
+.login ul {
+	width: 324px;
+	height: 100px;
+	margin: 0 23px;
+	float: left;
+	list-style: none;
+}	
+.login ul li {
+	width: 324px;
+	height: 30px;
+	line-height: 30px;
+	float: left;
+	list-style: none;
+}
+.login ul li.ad {
+	width: 314px;
+	height: 30px;
+	line-height: 32px;
+	float: left;
+	list-style: none;
+	/* background: url("/mail/images/login/login_fgx.gif") repeat-x top left; */
+	color: #71819e;
+	margin-top: 35px;
+}
+.login ul li label {
+	height: 30px;
+	line-height: 30px;
+	float: left;
+	vertical-align: middle;
+	font-size: 14px;
+}	
+.login ul li label input {
+	float: left;
+	border-left: 1px solid #9a9a9a;
+	border-top: 1px solid #7c7c7c;
+	border-right: 1px solid #c3c3c3;
+	border-bottom: 1px solid #c3c3c3;
+	height: 20px;
+	padding: 3px;
+	width: 130px;
+	line-height: 20px;
+}	
+.login ul li span {
+	height: 22px;
+	line-height: 22px;
+	float: left;
+	vertical-align: middle;
+	font-size: 12px;
+	color: #6076a0;
+	padding-left: 56px;
+}
+
+.loginBtn {
+	width: 60px;
+	height: 30px;
+	background: url("/mail/images/login/login_btn.gif") no-repeat 0 0;
+	float: left;
+	border: none;
+	margin: 15px 30px 0 60px;
+	cursor: pointer;
+}	
+.loginBtnOn {
+	width: 60px;
+	height: 30px;
+	background: url("/mail/images/login/login_btn.gif") no-repeat 0 -30px;
+	float: left;
+	border: none;
+	margin: 15px 30px 0 60px;
+	cursor: pointer;
+}
+.resetBtn {
+	width: 60px;
+	height: 30px;
+	background: url("/mail/images/login/reset_btn.gif") no-repeat 0 0;
+	float: left;
+	border: none;
+	margin: 15px 0px 0 0px;
+	cursor: pointer;
+}	
+.resetBtnOn {
+	width: 60px;
+	height: 30px;
+	background: url("/mail/images/login/reset_btn.gif") no-repeat 0 -30px;
+	float: left;
+	border: none;
+	margin: 15px 0px 0 0px;
+	cursor: pointer;
+}
+
+.foot {
+	margin: 0 auto;
+	width: 800px;
+	height: 30px;
+	line-height: 30px;
+	margin: 8px auto;	
+}	
+.foot p {
+	width: 800px;
+	height: 30px;
+	line-height: 30px;
+	color: #888888;
+	text-align: center;
+}
+
+.inputname {
+	background: none repeat scroll 0 0 #FFFFFF;
+    border-color: #C0C0C0 #BFBFBF #BFBFBF;
+    border-style: solid;
+    border-width: 1px;
+    color: #640064;
+    font-size: 12px;
+    font-weight: lighter;
+    height: 28px;
+    line-height: 20px;
+    margin: 0;
+    outline: medium none;
+    padding: 4px;
+    width: 100px;
+}

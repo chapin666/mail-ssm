@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="adm.mapper.GroupsMapper">
+	
+	<select id="checkNameExist" parameterType="String" resultType="Groups">
+		select * from groups where name=#{name}
+	</select>
+	
+	<select id="getGroups" parameterType="int" resultType="Groups">
+		select * from groups where id=#{id}
+	</select>
+	
+	<select id="listGuss" parameterType="int" resultType="Users">
+		select b.* from gus a,user b where a.userid = b.id and a.gid=#{gid}
+	</select>
+	
+	<select id="getGUId" parameterType="Guss" resultType="Guss">
+		select a.* from gus a where a.userid = #{userid} and a.gid=#{gid}
+	</select>
+	
+	<select id="listGnss" parameterType="int" resultType="Unit">
+		select b.* from gns a,unit b where a.unid = b.id and a.gid=#{gid}
+	</select>
+	
+	<select id="listGroups" parameterType="String" resultType="Groups">
+		select * from groups 
+		<if test="_parameter != null and _parameter != ''">where name like '%${_parameter}%'</if>
+		order by id desc
+	</select>
+	
+	<select id="listUnitUser" parameterType="Groups" resultType="UnitUser">
+		select * from (select id,name,username,type from (
+			select a.id as id,a.name as name,a.name as username,1 as type from unit a 
+			where exists (select  1 from gns b where b.unid=a.id and b.gid=#{id})
+			union
+			select c.id as id,c.name as name,c.username as username,2 as type from user c 
+			where exists (select  1 from gus d where d.userid=c.id and d.gid=#{id}) 
+		)t )p limit #{start},#{end}
+	</select>
+	
+	<select id="totalUnitUser" parameterType="Groups" resultType="int">
+		select count(1) from (
+			select a.id as id,a.name as name,a.name as username,1 as type from unit a 
+			where exists (select  1 from gns b where b.unid=a.id and b.gid=#{id})
+			union
+			select c.id as id,c.name as name,c.username as username,2 as type from user c 
+			where exists (select  1 from gus d where d.userid=c.id and d.gid=#{id}) 
+		)t
+	</select>
+	
+	<update id="editGroups" parameterType="Groups">
+		update groups
+		<set>  
+			<if test="name!=null and name!='' ">name=#{name},</if>
+			<if test="state!=null and state!=0 ">state=#{state}</if>
+    	</set>
+        where id=#{id}
+	</update>
+	
+	<delete id="deleteGroups" parameterType="int">
+		delete from groups where id=#{id}
+	</delete>
+	
+	<delete id="deleteGuss" parameterType="int">
+		delete from gus where gid=#{gid}
+	</delete>
+	
+	<delete id="deleteGnss" parameterType="int">
+		delete from gns where gid=#{gid}
+	</delete>
+	
+	<insert id="addGroups" parameterType="Groups">
+		insert into groups (name,state) values (#{name},#{state})
+	</insert>
+	
+	<delete id="deleteAllGuss" parameterType="String">
+		delete from gus where id in 
+		<foreach collection="array" item="ids"  open="(" separator="," close=")">  
+        	#{ids}  
+     	</foreach>
+	</delete>
+	
+	<delete id="deleteAllGnss" parameterType="String">
+		delete from gns where id in 
+		<foreach collection="array" item="ids"  open="(" separator="," close=")">  
+        	#{ids}  
+     	</foreach>
+	</delete>
+	
+	
+</mapper>

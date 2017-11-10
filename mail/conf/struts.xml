@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+    "http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts>
+	<constant name="struts.custom.i18n.resources" value="messageResource" />
+	<constant name="struts.objectFactory.spring.autoWire" value="type" />
+	<constant name="struts.action.extension" value="html,mail" />
+	<constant name="struts.multipart.saveDir" value="/tmp" /> 
+	<constant name="struts.multipart.maxSize" value="100000000"/>
+	<constant name="struts.i18n.encoding" value="UTF-8"/>
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	<constant name="struts.devMode" value="false" />
+	
+	<package name="struts2" extends="struts-default" namespace="/">
+	
+		<interceptors>
+			<interceptor name="loginInterceptor" class=""></interceptor>
+		</interceptors>
+	
+		<action name="index" class="indexAction" method="index">
+			<result name="success">/mail/page/index/index.jsp</result>
+		</action>
+		
+ 		<action name="login" class="indexAction" method="login">
+			<result name="success">/mail/page/login/login.jsp</result>
+		</action>
+		
+		<action name="top" class="indexAction" method="top">
+			<result name="success">/mail/page/index/top.jsp</result>
+		</action>
+		
+		<action name="left" class="indexAction" method="left">
+			<result name="success">/mail/page/index/left.jsp</result>
+		</action>
+		
+		<action name="main" class="indexAction" method="main">
+			<result name="success">/mail/page/index/main.jsp</result>
+		</action>
+		
+		<action name="UploadImgs" class="indexAction" method="UploadImgs">
+		</action>
+		
+		<action name="exit" class="indexAction" method="exitSystem">
+			<result name="success" type="redirectAction">
+			login.html
+			</result>
+		</action>
+		 
+		<action name="UploadImg" class="indexAction" method="UploadImg">
+		</action>
+
+		<action name="UploadAttach" class="indexAction" method="UploadAttach">
+		</action>
+		
+		<action name="fileUpload" class="uploadAction" method="fileUpload">
+		</action>
+		
+		<action name="deleteUpFile" class="uploadAction" method="deleteUpFile">
+		</action>
+
+                <action name="outer" class="outerAction" method="index" >
+			<result name="error">/mail/page/login/error.jsp</result>
+		</action>
+		<action name="home" class="outerAction" method="home" >
+			<result name="success">/mail/page/login/outer.jsp</result>
+		</action>
+		
+	</package>
+	
+	<include file="mail/User.xml"></include>
+	<include file="mail/Email.xml"></include>
+	<include file="mail/UGroup.xml"></include>
+	<include file="mail/Contact.xml"></include>
+	<include file="mail/Units.xml"></include>
+	<include file="mail/Group.xml"></include>
+	<include file="mail/Tag.xml"></include>
+	
+	<include file="adm/index.xml"></include>
+	<include file="adm/Member.xml"></include>
+	<include file="adm/Unit.xml"></include>
+	<include file="adm/Groups.xml"></include>
+	<include file="adm/Log.xml"></include>
+	<include file="adm/Email.xml"></include>
+	
+	<include file="adm/Emailspam.xml"></include>
+</struts>

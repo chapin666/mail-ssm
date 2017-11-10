@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mail.mapper.CongMapper">
+	
+	<select id="getCong" parameterType="int" resultType="Cong">
+		select * from cong where id=#{id}
+	</select>
+	
+	<select id="getCongList" parameterType="int" resultType="Cong">
+		select * from cong where ugid=#{ugid}
+	</select>
+	
+	<select id="getCidList" parameterType="String" resultType="String">
+		select cid from cong where ugid=#{ugid}
+	</select>
+	
+	<select id="getCongListByCids" parameterType="String" resultType="Cong">
+		select * from cong where cid in (${_parameter})
+	</select>
+	
+	<insert id="addCong" parameterType="Cong">
+		insert into cong (userid,name) values (#{userid},#{name}) 
+	</insert>
+	
+	<delete id="deleteCong" parameterType="Cong">
+		delete from cong where cid=#{cid} and ugid=#{ugid}
+	</delete>
+	
+</mapper>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mail.mapper.GgsMapper">
+	
+	<select id="checkNameExist" parameterType="Ggs" resultType="Ggs">
+		select * from ggs where userid=#{userid} and name=#{name}
+	</select>
+	
+	<select id="getGgs" parameterType="int" resultType="Ggs">
+		select * from ggs where id=#{id}
+	</select>
+	
+	<select id="getGgsList" parameterType="int" resultType="Ggs">
+		select ogid from ggs where gid=#{gid}
+	</select>
+	
+	<update id="editGgs" parameterType="Ggs">
+		update ggs
+		<set>  
+			<if test="name!=null and name!='' ">name=#{name}</if>
+    	</set>
+        where id=#{id}
+	</update>
+	
+	<insert id="addGgs" parameterType="Ggs">
+		insert into ggs (userid,name) values (#{userid},#{name}) 
+	</insert>
+	
+	<delete id="deleteGgs" parameterType="int">
+		delete from ggs where id=#{id}
+	</delete>
+	
+</mapper>

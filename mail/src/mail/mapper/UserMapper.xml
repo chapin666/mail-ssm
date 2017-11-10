@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mail.mapper.UserMapper">
+	
+	<select id="checkUserNameExist" parameterType="String" resultType="User">
+		select * from user where username=#{username} and domain = #{domain}
+	</select>
+	
+	<select id="getUser" parameterType="int" resultType="User">
+		select * from user where id=#{id}
+	</select>
+	
+	<select id="getUserSize" parameterType="int" resultType="int">
+		select count(1) from user
+	</select>
+	
+	<select id="getUsernameByUnits" parameterType="Units" resultType="User">
+		select * from user where unid in (${name}) and state=1 LIMIT #{start},#{end}
+	</select>
+	
+	<select id="getUsernameCountByUnits" parameterType="String" resultType="int">
+		select count(*) from user where unid in (${_parameter}) and state=1
+	</select>
+	
+	<select id="getUsernameByGroup" parameterType="Group" resultType="User">
+		select * from user where (id in (select userid from gus where gid=#{id}) or  unid in (${name})) and state=1 LIMIT ${start},${end};
+	</select>
+	
+	<select id="getUsernameCountByGroup" parameterType="Group" resultType="int">
+		select count(*) from user where (id in (select userid from gus where gid=#{id}) or  unid in (${name})) and state=1;
+	</select>
+	
+	<select id="getUsernameByGroupids" parameterType="String" resultType="User">
+		select * from user where (id in (select userid from gus where gid in (${_parameter})) or  unid in (select unid from gns where gid in (${_parameter}))) and state=1
+	</select>
+	
+	<select id="getUnids" parameterType="Group" resultType="String">
+		select unid from gns where gid=#{id}
+	</select>
+	
+	<select id="getAllUser" parameterType="int" resultType="User">
+		select user.*,configinfo.value as domainname from user,configinfo where state=1 and configinfo.id=user.domain and configinfo.name='domain'
+	</select>
+	
+	<select id="getUserByKey" parameterType="String" resultType="User">
+		select * from user where (name like '%${_parameter}%' or username like '%${_parameter}%') and state=1
+	</select>
+	
+	<select id="getUserByKey2" parameterType="String" resultType="User">
+		select name,addr username from contact where (contact.name like '%${_parameter}%' or contact.addr like '%${_parameter}%') and userid in(select id from user)
+	</select>
+	
+	<insert id="addUser" parameterType="User">
+		
+		
+		insert into user (name,username,domain,pass,unid,phone,sex,state)
+		values
+		(#{name},#{username},#{domain},#{pass},#{unid},#{phone},#{sex},#{state}) 
+		
+	</insert>
+	
+	<update id="editUser" parameterType="User">
+		update user
+		<set>  
+			<if test="name !=null and name!='' ">name=#{name},</if>
+			<if test="pass !=null and pass!='' ">pass=#{pass},</if>
+			<if test="unid!=null and unid!=0 ">unid=#{unid},</if>
+			<if test="phone !=null and phone!='' ">phone=#{phone},</if>
+			<if test="sex !=null and sex!=0 ">sex=#{sex},</if>
+			<if test="state !=null and state!=0 ">state=#{state}</if>
+    	</set>
+        where id=#{id}
+	</update>
+	
+	<update id="editPass" parameterType="User">
+		update user set pass=#{pass} where id=#{id}
+	</update>
+	
+	<delete id="delAll" parameterType="int">
+		delete from user
+	</delete>
+	
+	<select id="getTypeLoginlog" parameterType="logger" resultType="logger">
+		SELECT * from logger where types = '用户登录' and username=#{username} and odata=#{odata} ORDER BY time DESC LIMIT 1,1;
+	</select>
+</mapper>

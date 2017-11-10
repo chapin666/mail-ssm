@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mail.mapper.ContactMapper">
+	
+	<select id="checkAddrExist" parameterType="Contact" resultType="Contact">
+		select * from contact where userid=#{userid} and addr=#{addr}
+	</select>
+	
+	<select id="getContact" parameterType="int" resultType="Contact">
+		select * from contact where id=#{id}
+	</select>
+	
+	<select id="getSize" parameterType="Contact" resultType="int">
+		select count(1) from contact
+		<trim prefix="WHERE" prefixOverrides="AND|OR">  
+			<if test="userid != null and userid != 0 "> 
+	       		userid=#{userid}
+	       	</if>
+			<if test="ids != null and ids != ''"> 
+	       		and id in (${ids})
+	       	</if>
+	       	<if test="names != null and names != ''"> 
+	       		and addr in (${names})
+	       	</if>
+			<if test="name != null and name != '' and name != 'null'">
+				and (name like '%${name}%' or addr like '%${name}%')
+			</if>
+	       <if test="addr != null and addr != '' and addr != 'null'"> 
+	       		and addr like '%${addr}%' 
+	       </if>
+        </trim>
+	</select>
+	
+<!--
+	<select id="getContactList" parameterType="Contact" resultType="Contact">
+		select * from (select t.* from contact t
+		<trim prefix="WHERE" prefixOverrides="AND|OR">  
+			<if test="userid != null and userid != 0 "> 
+	       		userid=#{userid}
+	       	</if>
+			<if test="ids != null and ids != ''"> 
+	       		and id in (${ids})
+	       	</if>
+	       	<if test="names != null and names != ''"> 
+	       		and addr in (${names})
+	       	</if>
+			<if test="name != null and name != '' and name != 'null'">
+				and (name like '%${name}%' or addr like '%${name}%')
+			</if>
+	       <if test="addr != null and addr != '' and addr != 'null'"> 
+	       		and addr like '%${addr}%' 
+	       </if>
+       </trim>
+         order by id desc)a limit #{start},#{end}
+	</select>
+-->
+	<select id="getContactList" parameterType="Contact" resultType="Contact">
+		select t.* from contact t
+		<trim prefix="WHERE" prefixOverrides="AND|OR">  
+			<if test="userid != null and userid != 0 "> 
+	       		userid=#{userid}
+	       	</if>
+			<if test="ids != null and ids != ''"> 
+	       		and id in (${ids})
+	       	</if>
+	       	<if test="names != null and names != ''"> 
+	       		and addr in (${names})
+	       	</if>
+			<if test="name != null and name != '' and name != 'null'">
+				and (name like '%${name}%' or addr like '%${name}%')
+			</if>
+	       <if test="addr != null and addr != '' and addr != 'null'"> 
+	       		and addr like '%${addr}%' 
+	       </if>
+       </trim>
+         order by id desc
+         LIMIT #{start},#{end}
+	</select>
+	
+	<select id="getContactListByUgid" parameterType="String" resultType="Contact">
+		select * from contact where ugid like '%${_parameter}%'
+	</select>
+	
+	<select id="getContactListByUserid" parameterType="int" resultType="Contact">
+		select * from contact where userid=#{userid}
+	</select>
+	
+	<update id="editContact" parameterType="Contact">
+		update contact
+		<set>  
+			<if test="name !=null and name !='' ">name=#{name},</if>
+			<if test="addr !=null and addr !='' ">addr=#{addr},</if>
+			<if test="ugid !=null and ugid !='' ">ugid=#{ugid}</if>
+    	</set>
+        where id=#{id}
+	</update>
+	
+	<insert id="addContact" parameterType="Contact">
+		insert into contact (userid,name,addr) values (#{userid},#{name},#{addr}) 
+	</insert>
+	
+	<delete id="deleteContact" parameterType="String">
+		delete from contact where id in 
+		<foreach collection="array" item="ids"  open="(" separator="," close=")">  
+        	#{ids}
+     	</foreach>
+	</delete>
+	
+	<delete id="delAll" parameterType="String">
+		delete from contact
+	</delete>
+	
+</mapper>

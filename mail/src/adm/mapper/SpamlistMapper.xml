@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="adm.mapper.SpamlistMapper">
+	
+	<select id="selectspamlist" parameterType="spamlist" resultType="spamlist">
+		select * from spamlist where tag=#{tag} LIMIT #{start},#{end}
+	</select>
+	
+	<select id="spamlistCount" parameterType="int" resultType="int">
+	      select count(*) from spamlist where tag=#{tag}
+	</select>
+	
+	<select id=""></select>
+	
+	
+	<insert id="Addspamlist" parameterType="spamlist">
+	     insert into spamlist(address,state,tag) values(#{address},#{state},#{tag})
+	</insert>
+	
+	<delete id="deletespamlist" parameterType="int">
+	     delete from spamlist where id=#{id}
+	</delete>
+	
+	<delete id="deleteAll" parameterType="int">
+	     delete from spamlist where tag=#{tag}
+	</delete>
+	
+</mapper>

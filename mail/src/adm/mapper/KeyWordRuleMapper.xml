@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="adm.mapper.KeyWordRuleMapper">
+<!-- 分页查询 -->	
+<select id="selectKeyWordRule" parameterType="KeyWordRule" resultType="KeyWordRule">
+	select * from keywordrule LIMIT #{start},#{end}
+</select>
+
+<!-- 总记录 -->
+<select id="keyWordRuleCount" resultType="int">
+    select count(*) from keywordrule
+</select>
+
+<!-- 根据关键字查询 -->	
+<select id="mailKeyMore" parameterType="KeyWordRule" resultType="KeyWordRule">
+	select * from keywordrule 
+		<trim prefix="WHERE" prefixOverrides="AND|OR"> 
+			<if test="name != null and lasttime !=null">
+				name like '%${name}%' and lasttime like '%${lasttime}%'
+			</if>
+			<if test="name !=null and lasttime == null">
+				name like '%${name}%'
+			</if>
+			<if test="name == null and lasttime != null">
+				name like '%${lasttime}%'
+			</if>
+		</trim>
+		LIMIT #{start},#{end}
+</select>
+
+<!-- 根据条件统计 -->
+<select id="kwrCount" parameterType="KeyWordRule" resultType="int">
+    select count(*) from keywordrule
+    	<trim prefix="WHERE" prefixOverrides="AND|OR"> 
+			<if test="name != null and lasttime !=null">
+				name like '%${name}%' and lasttime like '%${lasttime}%'
+			</if>
+			<if test="name !=null and lasttime == null">
+				name like '%${name}%'
+			</if>
+			<if test="name == null and lasttime != null">
+				name like '%${lasttime}%'
+			</if>
+		</trim>
+</select>
+
+<!-- 删除关键字规则 -->
+<delete id="delKeyWordRule" parameterType="String">
+	delete from keywordrule where id in 
+	<foreach collection="array" item="ids"  open="(" separator="," close=")">  
+       	#{ids}  
+    	</foreach>
+</delete>
+
+<!-- 根据关键字修改关键字规则的状态 -->
+<update id="updateState" parameterType="KeyWordRule">
+	update keywordrule set state = #{state}  where id = #{id}  
+</update>
+
+<!-- 添加关键字规则 -->
+<insert id="addKeyWordRule" parameterType="KeyWordRule">
+	insert into keywordrule (name,grade,state,addresser,addressee,title,mainbody,lasttime)
+				values (#{name},#{grade},#{state},#{addresser},#{addressee},#{title},#{mainbody},now())
+</insert>
+</mapper>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mail.mapper.GnsMapper">
+	
+	<select id="checkNameExist" parameterType="Gns" resultType="Gns">
+		select * from gns where userid=#{userid} and name=#{name}
+	</select>
+	
+	<select id="getGns" parameterType="int" resultType="Gns">
+		select * from gns where id=#{id}
+	</select>
+	
+	<select id="getGnsList" parameterType="int" resultType="String">
+		select unid from gns where gid=#{gid}
+	</select>
+	
+	<update id="editGns" parameterType="Gns">
+		update gns
+		<set>  
+			<if test="name!=null and name!='' ">name=#{name}</if>
+    	</set>
+        where id=#{id}
+	</update>
+	
+	<insert id="addGns" parameterType="Gns">
+		insert into gns (userid,name) values (#{userid},#{name}) 
+	</insert>
+	
+	<delete id="deleteGns" parameterType="int">
+		delete from gns where id=#{id}
+	</delete>
+	
+</mapper>

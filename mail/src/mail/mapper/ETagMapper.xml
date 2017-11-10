@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mail.mapper.ETagMapper">
+	
+	<select id="getETag" parameterType="int" resultType="ETag">
+		select * from etag where id=#{id}
+	</select>
+	
+	<select id="getETagList" parameterType="int" resultType="ETag">
+		select * from etag where eid=#{eid}
+	</select>
+	
+	<select id="getEidList" parameterType="String" resultType="ETag">
+		select * from etag where tid=#{_parameter}
+	</select>
+	
+	<select id="getETagListByEids" parameterType="String" resultType="ETag">
+		select * from etag where eid in (${_parameter})
+	</select>
+	
+	<select id="getETagListByUser" parameterType="int" resultType="ETag">
+		select * from etag where tid in (select id from tags where userid=#{userid})
+	</select>
+	
+	<insert id="addETag" parameterType="ETag">
+		insert into etag (eid,tid) values (#{eid},#{tid}) 
+	</insert>
+	
+	<delete id="deleteETag" parameterType="String">
+		delete from etag where id=#{_parameter}
+	</delete>
+	
+</mapper>

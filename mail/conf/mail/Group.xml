@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+    "http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts>
+
+	<package name="Group" extends="struts-default" namespace="/group">
+		
+		<action name="getUserByGroup" class="groupAction" method="getUserByGroup">
+			<result name="success" type="redirectAction">
+				<param name="actionName">getContactList.html</param>
+				<param name="namespace">/contact</param>
+				<param name="gname">${#request.gname}</param>
+				<param name="usernames">${#request.usernames}</param>
+				<param name="id">${#request.id}</param>
+				<param name="userid">0</param>
+				
+				<param name="pagenow1">${#request.pagenow1}</param>
+				<param name="pagesize">${#request.pagesize}</param>
+				<param name="totalsize">${#request.totalsize}</param>
+				<param name="pagenum">${#request.pagenum}</param>
+			</result>
+		</action>
+		
+		<action name="getUserByGroups" class="groupAction" method="getUserByGroups">
+		</action>
+		
+		<action name="getGroupList" class="groupAction" method="getGroupList">
+			<result name="success">/page/power/editGroup.jsp</result>
+		</action>
+		
+	</package>
+		
+</struts>

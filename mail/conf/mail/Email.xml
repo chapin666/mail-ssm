@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+    "http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts>
+
+	<package name="Email" extends="struts-default" namespace="/email">
+
+		<action name="Write" class="emailAction" method="Write">
+			<result name="success">/mail/page/email/write.jsp</result>
+		</action>
+		
+		<action name="getMail" class="emailAction" method="getMail">
+			<result name="success">/mail/page/email/getmail.jsp</result>
+		</action>
+		
+		<action name="getMainMail" class="emailAction" method="getMainMail">
+			<result name="success">/mail/page/email/getmainmail.jsp</result>
+		</action>
+		
+		<action name="fromMail" class="emailAction" method="fromMail">
+			<result name="success">/mail/page/email/sendmail.jsp</result>
+		</action>
+		
+		<action name="saveMail" class="emailAction" method="saveMail">
+			<result name="success">/mail/page/email/savemail.jsp</result>
+		</action>
+		
+		<action name="delMail" class="emailAction" method="delMail">
+			<result name="success">/mail/page/email/delmail.jsp</result>
+		</action>
+		
+		<!-- 清空所以以删除邮件 -->
+		<action name="clearDel" class="emailAction" method="clearDel">
+			<result name="success" type="redirectAction">
+				<param name="actionName">left.html</param>
+				<param name="namespace">/</param>				
+			</result>
+			<!-- <result name="success">/mail/page/email/delmail.jsp</result> -->
+		</action>
+		<!-- 清空垃圾箱所有邮件 -->
+		<action name="clearRub" class="emailAction" method="clearRub">
+			<result name="success" type="redirectAction">
+				<param name="actionName">left.html</param>
+				<param name="namespace">/</param>				
+			</result>
+			<!-- <result name="success">/mail/page/email/rubmail.jsp</result> -->
+		</action>
+		
+		<action name="dsSendMail" class="emailAction" method="dsSendMail">
+			<result name="success">/mail/page/email/success.jsp</result>
+		</action>
+		
+		<action name="News" class="emailAction" method="News">
+			<result name="success">/mail/page/email/news.jsp</result>
+		</action>
+		
+		<action name="SendMail" class="emailAction" method="SendMail">
+			<result name="to3">/mail/page/email/write.jsp</result>
+			<result name="to1">/mail/page/email/success.jsp</result>
+		</action>
+		
+		<!--  
+			<action name="addDraftsMail" class="emailAction" method="addDraftsMail">
+			<result name="to3">/mail/page/email/write.jsp</result>
+			<result name="to1">/mail/page/email/success.jsp</result>
+		</action>
+		-->
+		
+		<action name="EditReciveMail" class="emailAction" method="EditReciveMail">
+			<result name="success" type="redirectAction">
+				getMail.html
+			</result>
+		</action>
+		
+		<action name="EditFromMail" class="emailAction" method="EditFromMail">
+			<result name="success" type="redirectAction">
+				fromMail.html
+			</result>
+		</action>
+		
+		<action name="EditSaveMail" class="emailAction" method="EditSaveMail">
+			<result name="success" type="redirectAction">
+				saveMail.html
+			</result>
+		</action>
+
+		<action name="EditDelMail" class="emailAction" method="EditDelMail">
+			<result name="success" type="redirectAction">
+				delMail.html
+			</result>
+		</action>
+		
+		<action name="ReportMail" class="emailAction" method="ReportMail">
+			<result name="success" type="redirectAction">
+				getMail.html
+			</result>
+		</action>
+
+		<action name="RecallMail" class="emailAction" method="RecallMail">
+		</action>
+		
+		<action name="EditInfoMail" class="emailAction" method="EditInfoMail">
+			<result name="success" type="redirectAction">
+				<param name="actionName">MailInfo.html</param>
+				<param name="namespace">/email</param>
+				<param name="id">${#request.eid}</param>
+				<param name="ftype">${#request.ftype}</param>
+			</result>
+			<result name="list1" type="redirectAction">
+				getMail.html
+			</result>
+			<result name="list2" type="redirectAction">
+				fromMail.html
+			</result>
+			<result name="list3" type="redirectAction">
+				saveMail.html
+			</result>
+			<result name="list4" type="redirectAction">
+				delMail.html
+			</result>
+		</action>
+		
+		<action name="EditMainMail" class="emailAction" method="EditMainMail">
+		
+		</action>
+		
+		<action name="EditNewsMail" class="emailAction" method="EditNewsMail">
+			<result name="success" type="redirectAction">
+				News.html
+			</result>
+		</action>
+		
+		<action name="MailInfo" class="emailAction" method="MailInfo">
+			<result name="success">/mail/page/email/mailinfo.jsp</result>
+			<result name="tagmail">/mail/page/email/mailtaginfo.jsp</result>
+		</action>
+		
+       <action name="download" class="emailAction" method="download">
+			<result name="success">/mail/page/email/mailinfo.jsp</result>
+		</action>
+		
+		<action name="ReWrite" class="emailAction" method="ReWrite">
+			<result name="success">/mail/page/email/write.jsp</result>
+		</action>
+		
+		<action name="ReSendMail" class="emailAction" method="SendMail">
+			<result name="to3">/mail/page/email/write.jsp</result>
+			<result name="to1">/mail/page/email/success.jsp</result>
+		</action>
+		
+		<!-- 获取垃圾箱所有垃圾 -->
+		<action name="getRubMail" class="emailAction" method="getRubMail">
+			<result name="success">/mail/page/email/rubmail.jsp</result>
+		</action>
+		
+		<!-- 彻底删除垃圾邮件 -->
+		<action name="editRubMail" class="emailAction" method="editRubMail">
+			<result name="success">/mail/page/email/rubmail.jsp</result>
+		</action>
+		<!-- 这不是垃圾 -->
+		<action name="noRubMail" class="emailAction" method="noRubMail">
+			<result name="success">/mail/page/email/rubmail.jsp</result>
+		</action>
+	</package>
+		
+</struts>

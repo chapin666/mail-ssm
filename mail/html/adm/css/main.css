@@ -1,0 +1,200 @@
+@CHARSET "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+	font-size: 12px;
+	font-family: "宋体";
+}	
+body {
+	background: #EFEFEF;
+}
+a {
+    color: #1E5494;
+    cursor: pointer;
+    outline: medium none;
+    text-decoration: none;
+}
+a:hover {
+	color: #1E5494;
+    cursor: pointer;
+    outline: medium none;
+	text-decoration: underline;
+}	
+.main {
+	width: 100%;
+	height: 100%;
+}
+.content {
+	width: 960px;
+	margin: 0 auto;
+	text-align: left;
+	background: #FFFFFF;
+    border: 1px solid #D4D4D4;
+    min-height: 320px;
+    padding-top: 1px;
+}	
+.content .homepage {
+    line-height: 1.7;
+    margin: 30px 35px;
+    overflow: hidden;
+    width: 890px;
+}
+.left {
+    overflow: hidden;
+    width: 590px;
+    float: left;
+    background: url("/adm/images/index/main_fg_bg.jpg") no-repeat right center;
+    margin-right: 25px;
+    padding: 0 20px 20px 0;
+}
+.right {
+    color: #666666;
+    overflow: hidden;
+    width: 240px;
+    float: left;
+}
+.content h1.welcome {
+    margin: 5px 0 15px 10px;
+    font-family: '微软雅黑';
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 18px;
+}
+.main_function {
+    margin: 15px 0 36px 10px;
+    overflow: hidden;
+    padding-bottom: 5px;
+    list-style: none;
+}
+.main_function li {
+    float: left;
+    list-style: none;
+}
+.main_function a {
+    border: 1px solid #E0DEDE;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 1px 1px 3px #DDDDDD;
+    color: #7D7D7D;
+    display: block;
+    font: bold 16px/70px "微软雅黑","宋体";
+    height: 70px;
+    margin: 20px 20px 0 0;
+    opacity: 0.9;
+    transition: all 0.1s ease 0s;
+    width: 170px;
+    text-align: left;
+}
+.main_function a:hover {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #AAAAAA;
+    box-shadow: 1px 1px 6px #BBBBBB;
+    color: #666666;
+    opacity: 1;
+    text-decoration: none;
+}
+.main_function a:active {
+    opacity: 0.8;
+}
+.ico_addMember, .ico_internalNotice, .ico_sendGroupMail, .ico_mailGroup, .ico_mailList, .ico_entDisk, .ico_crmAddr {
+    background: url("/adm/images/index/main_title_bg.png") no-repeat 0 -16px;
+    display: inline-block;
+    height: 32px;
+    margin-left: 24px;
+    vertical-align: middle;
+    width: 42px;
+}
+.ico_addMember {
+    background-position: -70px -20px;
+}
+.ico_internalNotice {
+    background-position: 8px -19px;
+}
+.ico_mailGroup {
+    background-position: -115px -19px;
+}
+.ico_mailList {
+    background-position: -158px -19px;
+    margin: 0 8px 0 28px;
+}
+.ico_entDisk {
+    background-position: 10px -55px;
+}
+.ico_crmAddr {
+    background-position: -28px -56px;
+}
+
+
+.inforbar {
+    margin-bottom: 22px;
+    overflow: hidden;
+    display: block;
+}
+.inforbar h4 {
+    background: url("/adm/images/index/main_h1_bg.jpg") no-repeat -15px center;
+    color: #A0A0A0;
+    font-size: 12px;
+    font-weight: lighter;
+    margin: 5px 0;
+    text-align: center;
+    width: 100%;
+}
+.inforbar .d_list {
+    overflow: hidden;
+    padding: 0 10px;
+    color: #666666;
+    line-height: 1.7;
+    font-size: 14px;
+    position: relative;
+    text-align: center;
+}
+.inforbar .d_list a {
+    color: #707070;
+}
+.inforbar .cy {
+	text-align: left;
+}	
+.inforbar .co_domain {
+    position: absolute;
+    right: 10px;
+    top: 3px;
+    height: 16px;
+    width: 16px;
+	background: url("/adm/images/index/main_ico.gif") no-repeat;
+	background-position: 0 -32px;
+    display: inline-block;
+    overflow: hidden;
+}
+.inforbar .d_list a.b_size {
+    font-size: 14px;
+    color: #1E5494;
+    cursor: pointer;
+    outline: medium none;
+    text-decoration: none;
+    line-height: 26px;
+}
+.inforbar .d_list a.b_size:hover {
+    font-size: 14px;
+    color: #1E5494;
+    cursor: pointer;
+    outline: medium none;
+    text-decoration: underline;
+}
+a.b_size b.num {
+    font-size: 22px;
+}
+
+.footer {
+    margin: 35px auto;
+    text-align: center !important;
+    clear: both;
+    width: 960px;
+}
+.footer p {
+	color: #707070;
+	padding-top: 4px;
+}	
+
+
+
+

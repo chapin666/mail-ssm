@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+    "http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts>
+	<package name="Log" extends="struts-default" namespace="/log">
+
+		<action name="log" class="loggerAction">
+			<result name="list1">/adm/page/index/log1.jsp</result>
+			<result name="list2">/adm/page/index/log2.jsp</result>
+			<result name="list21">/adm/page/index/log21.jsp</result>
+			<result name="list22">/adm/page/index/log22.jsp</result>
+			<result name="list3">/adm/page/index/log3.jsp</result>
+			<result name="list4">/adm/page/index/log4.jsp</result>
+			<result name="getSendName">/adm/page/index/sendInfo.jsp</result>			
+			<result name="toList" type="redirectAction">
+				<param name="actionName">log!list.html</param>
+				<param name="namespace">/log</param>
+				<param name="day">${day}</param>
+			</result>
+		</action>		
+		
+	</package>
+		
+</struts>

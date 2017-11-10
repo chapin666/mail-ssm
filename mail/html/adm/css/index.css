@@ -1,0 +1,24 @@
+@CHARSET "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+	font-size: 12px;
+	font-family: "宋体";
+}
+body {
+	background: #fff;
+}
+a {
+	color: #2a586f;
+	text-decoration: none;
+	outline: none;
+	cursor: pointer;
+}	
+a:hover {
+	color: #2a586f;
+	text-decoration: none;
+}	
+a:active {
+	star:expression(this.onFocus=this.blur());
+}

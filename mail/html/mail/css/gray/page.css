@@ -1,0 +1,64 @@
+@CHARSET "UTF-8";
+.page .on{
+	background:#C30; 
+	color:#FFF;
+}
+.page{
+	text-align:right;
+	margin-right:10px;
+	padding-top:3px;
+	font-family:Verdana,Arial; 
+	font-size:12px; 
+	display:block; 
+}
+.page a{ 
+	border:solid 1px #e5e5e5; 
+	padding:3px 5px 3px 5px; 
+	margin-right:5px;
+	color:#333333; 
+	text-decoration:none;
+	cursor:pointer;
+}
+.page a:hover{
+	color:#FFF; 
+	text-decoration:none; 
+	background:#2d8401;
+}
+.btn .on{
+	background:#C30; 
+	color:#FFF;
+}
+.btn{
+	text-align:right;
+	padding-top:3px;
+	margin-left:10px;
+	font-family:Verdana,Arial; 
+	font-size:12px; 
+	display:block; 
+}
+.btn a{ 
+	border:solid 1px #e5e5e5; 
+	padding:3px 5px 3px 5px; 
+	margin-left:1px;
+	color:#FFF;
+	text-decoration:none;
+	cursor:pointer;
+	background:#2d8401;
+}
+.btn a:hover{
+	color:#FFF; 
+	text-decoration:none; 
+	background:#349105;
+}
+.sbt{
+	border:solid 1px #e5e5e5; 
+	padding:2px 3px; 
+	margin-left:1px;
+	color:#222;
+	text-decoration:none;
+	cursor:pointer;
+	background:#b9fe96;
+}
+.numclick{
+	background:#2d8401;
+}

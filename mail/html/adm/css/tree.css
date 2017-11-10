@@ -1,0 +1,78 @@
+*{
+	padding:0px;
+	margin:0px;
+}
+body {
+	padding:0px;
+	margin:0 auto;
+	font-size:12px; 
+	font-family:"宋体"; 
+	text-align:center;
+}
+a {
+	color:#626262;
+	text-decoration: none;
+	outline: none;
+	cursor: pointer;
+}	
+a:hover {
+	color: #e76a05;
+	text-decoration: none;
+}	
+a:active {
+	star:expression(this.onFocus=this.blur());
+}
+.open{
+	background:url('/images/frame/open.gif') no-repeat;
+	width:16px;
+	height:16px;
+	margin:2px 5px 0 0;
+	float:left;
+}
+.close{
+	background:url('/images/frame/close.gif') no-repeat;
+	width:16px;
+	height:16px;
+	margin:2px 5px 0 0;
+	float:left;
+}
+.file{
+	background:url('/images/frame/page.gif') no-repeat;
+	width:16px;
+	height:16px;
+	margin:2px 5px 0 0;
+	float:left;
+}
+.dtree {
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #666;
+	white-space: nowrap;
+}
+.dtree img {
+	border: 0px;
+	vertical-align: middle;
+}
+.dtree a {
+	color: #333;
+	text-decoration: none;
+	vertical-align: bottom;
+}
+.t{
+	line-height: 25px;
+	display: inline;
+	position: relative;
+	top:4px;
+}
+.dtree a .node,.dtree a .nodeSel {
+	white-space: nowrap;
+	padding-left: 2px;
+}
+.dtree a.node:hover,.dtree a.nodeSel:hover {
+	color: #c06;
+	text-decoration: none;
+}
+
+.dTreeNode {
+	line-height: 26px;
+}

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>   
+	<!-- 要调用的工作类 -->
+  	<bean id="scheduleInfoAction" class="com.action.crp.QuartzJob"></bean>
+
+	<!-- 定义调用对象和调用对象的方法 -->
+	<bean id="schedulerJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+   		<!-- 调用的类 -->
+   		<property name="targetObject" ref="scheduleInfoAction"/>
+    	<!-- 调用类中的方法 -->
+    	<property name="targetMethod" value="simpleJobTest"/>
+    	<!-- 指定concurrent设为false，多个job不会并发运行，第二个job将不会在第一个job完成之前开始 -->
+		<property name="concurrent" value="false"/>
+	</bean>
+	
+	<!-- 定义触发时间 -->
+	<bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean" >
+		<property name="jobDetail" ref="schedulerJobDetail"/>
+		<!-- cron表达式 cronExpression：0/10 * * * * ?表示每10秒执行一次 -->
+		<property name="cronExpression">
+			<value>0/10 * * * * ?</value>
+		</property>
+	</bean>
+	
+	<!-- 总管理类 如果将lazy-init='false'那么容器启动就会执行调度程序  -->
+	<bean id="schedulerFactory" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref local="cronTrigger"/>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- 
+	<bean id="scheduleInfoAction" class="com.lively.happyoa.jobs.webapp.action.ScheduleInfoAction">
+   		<property name="scheduler" ref="schedulerFactory"/>
+       	<property name="scheduleInfoManager" ref="scheduleInfoManager"/>
+	</bean>
+
+	<bean id="schedulerJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+      	<property name="targetObject" ref="scheduleInfoAction"/>
+    	<property name="targetMethod" value="reScheduleJob"/>
+   		<property name="concurrent" value="false"/>
+	</bean>
+
+	<bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean" >
+    	<property name="jobDetail" ref="schedulerJobDetail"/>
+     	<property name="cronExpression">
+        	<value>0/10 * * * * ?</value>
+   		</property>
+	</bean>
+
+	<bean id="schedulerFactory" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+      	<property name="triggers">
+        	<list>
+           		<ref local="cronTrigger"/>
+       		</list>
+		</property>
+	</bean>
+	-->
+	 
+</beans> 

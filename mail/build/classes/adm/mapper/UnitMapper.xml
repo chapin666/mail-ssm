@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="adm.mapper.UnitMapper">
+	
+	<select id="checkNameExist" parameterType="String" resultType="Unit">
+		select * from unit where name=#{name}
+	</select>
+	
+	<select id="getUnit" parameterType="int" resultType="Unit">
+		select * from unit where id=#{id}
+	</select>
+	
+	<select id="getUnitSize" parameterType="int" resultType="int">
+		select count(1) from unit
+	</select>
+	
+	<select id="getIdbyPids" parameterType="String" resultType="String">
+		select t.id from unit t where t.pid in (${_parameter})
+	</select>
+	
+	<select id="getUserNameById" parameterType="String" resultType="String">
+		select username from user where id=#{id}
+	</select>
+	
+	<select id="getUnitList" parameterType="Unit" resultType="Unit">
+		select * from unit
+		<trim prefix="WHERE" prefixOverrides="AND|OR">  
+			<if test="name != null and name != '' and name != 'null'">
+				name like '%${name}%'
+			</if>
+			<if test="pid != null and pid != 0">
+				pid=#{pid}
+			</if>
+        </trim>
+	</select>
+	
+	<select id="getUnitByJson" parameterType="String" resultType="Unit">
+		select t.* from unit t where t.pid=#{_parameter}
+	</select>
+	
+	<update id="editUnit" parameterType="Unit">
+		update unit
+		<set>  
+			<if test="name!=null and name!='' ">name=#{name},</if>
+    	</set>
+        where id=#{id}
+	</update>
+	
+	<delete id="deleteUnit" parameterType="int">
+		delete from unit where id=#{id}
+	</delete>
+	
+	<insert id="addUnit" parameterType="Unit">
+		insert into unit (pid,name) values (#{pid},#{name})
+	</insert>
+	
+	<insert id="addDoMain" parameterType="Config">
+		insert into configinfo (name,value) values (#{name},#{value})
+	</insert>
+	
+	<select id="getDoMain" parameterType="String" resultType="Config">
+		select * from configinfo t where t.name=#{_parameter}
+	</select>
+	
+	<update id="updateDoMain" parameterType="Config">
+		update configinfo
+		<set>  
+			<if test="value!=null and value!='' ">value=#{value}</if>
+    	</set>
+        where id=#{id}
+	</update>
+	
+</mapper>

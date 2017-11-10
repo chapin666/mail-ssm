@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="adm.mapper.MemberMapper">
+	
+	<select id="getSize" parameterType="Member" resultType="int">
+		select count(1) from member
+		<trim prefix="WHERE" prefixOverrides="AND|OR">  
+			<if test="name != null and name != '' and name != 'null'">
+				name like '%${name}%'
+			</if>
+	       <if test="phone != null and phone != '' and phone != 'null'"> and phone like '%${phone}%' </if>
+        </trim>
+	</select>
+	
+	<select id="getMemberList" parameterType="Member" resultType="Member">
+		select * from (select t.* from member t
+		<trim prefix="WHERE" prefixOverrides="AND|OR">  
+			<if test="name != null and name != '' and name != 'null'">
+				name like '%${name}%'
+			</if>
+	       <if test="phone != null and phone != '' and phone != 'null'"> and phone like '%${phone}%' </if>
+       </trim>
+         order by id desc)a limit #{start},#{end}
+	</select>
+	
+	<update id="editMember" parameterType="Member">
+		update member
+		<set>  
+			<if test="name!=null and name!='' ">name=#{name},</if>
+			<if test="pass!=null and pass!='' ">pass=#{pass},</if>
+			<if test="phone!=null and phone!='' ">phone=#{phone},</if>
+			<if test="type!=null">type=#{type},</if>
+			<if test="units!=null and units!='' ">units=#{units}</if>
+    	</set>
+        where id=#{id}
+	</update>
+	
+	<update id="updatePassword" parameterType="Member">
+		update member set pass=#{pass} where id=#{id}
+	</update>
+	
+	<delete id="deleteMember" parameterType="String">
+		delete from member where id in 
+		<foreach collection="array" item="ids"  open="(" separator="," close=")">  
+        	#{ids}  
+     	</foreach>
+	</delete>
+	
+	<insert id="addMember" parameterType="Member">
+		insert into member (name,username,pass,phone,type,units) values (#{name},#{username},#{pass},#{phone},#{type},#{units})
+	</insert>
+	
+	
+	
+	<select id="getMember" parameterType="Member" resultType="Member">
+		<if test="id != 0">
+			select * from member where id = #{id}
+		</if>
+		<if test="username != null">
+			select * from member where username = #{username}
+		</if>		
+	</select>
+	
+	
+	
+</mapper>

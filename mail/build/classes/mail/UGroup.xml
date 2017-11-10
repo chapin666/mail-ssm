@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+    "http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts>
+
+	<package name="UGroup" extends="struts-default" namespace="/ugroup">
+
+		<action name="addUGroup" class="uGroupAction" method="addUGroup">
+			<result name="success">/mail/page/contact/addugroup.jsp</result>
+		</action>
+		
+		<action name="doAddUGroup" class="uGroupAction" method="doAddUGroup">
+			<result name="success" type="redirectAction">
+				<param name="actionName">getContactList.html</param>
+				<param name="namespace">/contact</param>
+				<param name="ugid">${ugroup.id}</param>
+				<param name="name">${ugroup.name}</param>
+			</result>
+		</action>
+		
+		<action name="editUGroup" class="uGroupAction" method="editUGroup">
+			<result name="success">/mail/page/contact/editugroup.jsp</result>
+		</action>
+		
+		<action name="doEditUGroup" class="uGroupAction" method="doEditUGroup">
+			<result name="success" type="redirectAction">
+				<param name="actionName">getContactList.html</param>
+				<param name="namespace">/contact</param>
+				<param name="ugid">${ugroup.id}</param>
+				<param name="name">${ugroup.name}</param>
+			</result>
+		</action>
+		
+		<action name="deleteUGroup" class="uGroupAction" method="deleteUGroup">
+		</action>
+		
+		<action name="getUGroupList" class="uGroupAction" method="getUGroupList">
+			<result name="success">/page/power/editPUGroup.jsp</result>
+		</action>
+		
+		<action name="checkNameExist" class="uGroupAction" method="checkNameExist">
+		</action>
+		
+	</package>
+		
+</struts>

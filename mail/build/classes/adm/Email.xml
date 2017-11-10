@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+    "http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts>
+
+	<package name="Emails" extends="struts-default" namespace="/emails">
+		
+		<action name="SendNews" class="emailAction" method="SendNews">
+			<result name="success">/adm/page/index/sendnewsletter.jsp</result>
+		</action>
+		
+		<action name="SendSubAdmin" class="emailAction" method="SendSubAdmin">
+			<result name="success">/adm/page/index/addsubadmin.jsp</result>
+		</action>
+		
+		<action name="getNews" class="emailAction" method="getNews">
+			<result name="success">/adm/page/index/newsletter.jsp</result>
+		</action>
+		
+		<action name="SendAdmMail" class="emailAction" method="SendAdmMail">
+			<result name="to3">/adm/page/index/cgsuccess.jsp</result>
+			<result name="to1">/adm/page/index/success.jsp</result>
+		</action>
+		
+		<action name="NewsInfo" class="emailAction" method="NewsInfo">
+			<result name="success">/adm/page/index/newsinfo.jsp</result>
+		</action>
+		
+		<action name="ReEditMail" class="emailAction" method="ReEditMail">
+			<result name="success">/adm/page/index/sendnewsletter.jsp</result>
+		</action>
+		
+		<action name="delNews" class="emailAction" method="delNews">
+			<result name="success" type="redirectAction">getNews.mail</result>
+		</action>
+		
+	</package>
+		
+</struts>

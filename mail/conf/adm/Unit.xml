@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+    "http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts>
+	
+	<package name="Unit" extends="struts-default" namespace="/unit">
+
+		<action name="checkNameExist" class="unitAction" method="checkNameExist">
+		</action>
+		
+		<action name="toUnit" class="unitAction" method="toUnit">
+			<result name="success">/adm/page/index/unit.jsp</result>
+		</action>
+		
+		<action name="updateQTLogo" class="unitAction" method="updateQTLogo">
+			<result name="success">/adm/page/index/unit.jsp</result>
+		</action>
+		<!-- 注册信息 -->
+		<action name="regeditInfo" class="unitAction" method="regeditInfo">
+			<result name="success">/adm/page/index/regeditInfo.jsp</result>
+		</action>
+		
+		<!-- 编辑注册信息 -->
+		<action name="editRegeditInfo" class="unitAction" method="editRegeditInfo">
+			<result name="success">/adm/page/index/editRegeditInfo.jsp</result>
+		</action>
+		<!-- 修改注册信息 -->
+		<action name="updateRegeditInfo" class="unitAction" method="updateRegeditInfo">
+			<result name="success">/adm/page/index/regeditInfo.jsp</result>
+		</action>
+		
+		<action name="updateHTLogo" class="unitAction" method="updateHTLogo">
+			<result name="success">/adm/page/index/unit.jsp</result>
+		</action>
+		
+		<action name="addUnit" class="unitAction" method="addUnit">
+			<result name="success">/adm/page/unit/addunit.jsp</result>
+		</action>
+		
+		<action name="doAddUnit" class="unitAction" method="doAddUnit">
+			<result name="success" type="redirectAction">
+				getUserByUnit.mail
+			</result>
+		</action>
+		
+		<action name="editState" class="unitAction" method="editState">
+			<result name="success" type="redirectAction">
+				getUserByUnit.mail?pagenow=${pagenow}
+			</result>
+		</action>
+		
+		<action name="deleteUsers" class="unitAction" method="deleteUsers">
+			<result name="success" type="redirectAction">
+				getUserByUnit.mail?pagenow=${pagenow}
+			</result>
+		</action>
+		
+		<action name="editUnit" class="unitAction" method="editUnit">
+			<result name="success">/adm/page/unit/editunit.jsp</result>
+		</action>
+		
+		<action name="doEditUnit" class="unitAction" method="doEditUnit">
+			<result name="success" type="redirectAction">
+				getUserByUnit.mail
+			</result>
+		</action>
+		
+		<action name="editGroups" class="unitAction" method="editGroups">
+			<result name="success" type="redirectAction">
+				getUserByUnit.mail
+			</result>
+		</action>
+		
+		<action name="editUnitId" class="unitAction" method="editUnitId">
+			<result name="success" type="redirectAction">
+				getUserByUnit.mail
+			</result>
+		</action>
+		
+		<action name="getUnitList" class="unitAction" method="getUnitList">
+			<result name="success">/adm/page/unit/unitlist.jsp</result>
+		</action>
+		
+		<action name="getUserByUnit" class="unitAction" method="getUserByUnit">
+			<result name="success">/adm/page/index/member.jsp</result>
+		</action>
+		<!-- 修改域名 -->
+		<action name="updateHost" class="unitAction" method="updateHost">
+			<result name="updateHost">/adm/page/index/domain.jsp</result>
+		</action>
+		<!-- 删除域名 -->
+		<action name="delHost" class="unitAction" method="delHost">
+			<result name="success">/adm/page/index/domain.jsp</result>
+		</action>
+
+		<action name="toUpdateHost" class="unitAction" method="toUpdateHost">
+			<result name="updateHost">/adm/page/index/domain.jsp</result>
+		</action>
+
+		<action name="deleteUnit" class="unitAction" method="deleteUnit">
+			<result name="success" type="redirectAction">
+				getUserByUnit.mail
+			</result>
+		</action>
+
+		<action name="getUnitPidById" class="unitAction" method="getUnitPidById">
+		</action>
+		
+		<!-- 检查域名是否存在 -->
+		<action name="checkHostNameExist" class="unitAction" method="checkHostNameExist">
+		</action>
+		
+	</package>
+	
+	<package name="Unit_ajax" extends="json-default" namespace="/unit_ajax">
+
+		<action name="getUnitByJson" class="unitAction" method="getUnitByJson">
+			<result type="json" name="success">
+				<param name="root">unitjson</param>			
+			</result>
+		</action>
+		
+    </package>
+     
+</struts>

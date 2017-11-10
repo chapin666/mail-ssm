@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+	<title>登录测试</title>
+	<meta charset="utf-8" />
+</head>
+
+<body>
+
+<!-- start -->
+<div>
+	<ul>
+		<li>
+			用户名：
+			<input type="text" class="index_txt"  name="user"  id="txt_Name" />
+		</li>
+		<li>
+			密&nbsp;&nbsp;码：
+			<input type="password" class="index_txt" name="pass" id="txt_Pwd" />
+			<input type="hidden" id="domainhost" value="cddx.gov.cn" />
+		</li>
+		<li>
+			<span id="error" name="error" style="color:red;font-size:12px;"></span>
+		</li>
+		<li>
+			<input type="button" value="登录" onclick="loginRequest()">
+		</li>
+	</ul>
+</div>
+
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="mail.js"></script>
+<!--/ end -->
+</body>
+</html>

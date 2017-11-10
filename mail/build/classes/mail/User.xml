@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+    "http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts>
+
+	<package name="User" extends="struts-default" namespace="/user">
+
+		<action name="editUser" class="userAction" method="editUser">
+			<result name="success">/page/power/editPUser.jsp</result>
+		</action>
+		
+		<action name="doEditUser" class="userAction" method="doEditUser">
+			<result name="success" type="redirectAction">
+				userList.html
+			</result>
+		</action>
+		
+		<action name="editPass" class="userAction" method="editPass">
+			<result name="success">/mail/page/index/password.jsp</result>
+		</action>
+		
+		<action name="toEditPass" class="userAction" method="toEditPass">
+			<result name="success">/mail/page/index/password.jsp</result>
+		</action>
+		
+		<action name="checkPassword" class="userAction" method="checkPassword">
+		</action>
+		
+		<action name="doEditPass" class="userAction" method="doEditPass">
+			<result name="success" type="redirectAction">
+				editPass.html
+			</result>
+		</action>
+		
+		<action name="checkUsernameExist" class="userAction" method="checkUsernameExist">
+		</action>
+		
+		<action name="checkPass" class="userAction" method="checkPass">
+		</action>
+		
+		<action name="checkPassInteface" class="userAction" method="checkPassInteface">
+		</action>
+		<action name="checkUserInteface" class="userAction" method="checkUserInterface">
+		</action>
+		
+		
+		<action name="getUserByKey" class="userAction" method="getUserByKey">
+		</action>
+		
+		
+		<action name="addAdmUser" class="userAction" method="addAdmUser">
+			<result name="success">/adm/page/index/addmember.jsp</result>
+		</action>
+		
+		<action name="doAddAdmUser" class="userAction" method="doAddAdmUser">
+			<result name="success" type="redirectAction">
+				<param name="namespace">/unit</param>
+				<param name="actionName">getUserByUnit</param>
+				<param name="id">1</param>
+			</result>
+		</action>
+		
+		<action name="checkUserSize" class="userAction" method="checkUserSize">
+		</action>
+		
+		<action name="editAdmUser" class="userAction" method="editAdmUser">
+			<result name="success">/adm/page/index/editmember.jsp</result>
+		</action>
+		
+		<action name="doEditAdmUser" class="userAction" method="doEditAdmUser">
+			<result name="success" type="redirectAction">
+				<param name="namespace">/unit</param>
+				<param name="actionName">getUserByUnit</param>
+				<param name="id">1</param>
+			</result>
+		</action>
+		
+		
+		<!-- 邮箱设置 -->
+		<action name="setmail" class="userAction" method="setmail">
+			<result name="success">/mail/page/contact/setmail.jsp</result>
+		</action>
+		<action name="spam_blacklist" class="userAction" method="spam_blacklist">
+			<result name="success">/mail/page/contact/setmail_spam_blacklist.jsp</result>
+		</action>
+		<action name="spam_blacklist_list" class="userAction" method="spam_blacklist_list">
+			<result name="success">/mail/page/contact/setmail_spam_blacklist_list.jsp</result>
+		</action>
+		<action name="spam_blacklist_domain_list" class="userAction" method="spam_blacklist_domain_list">
+			<result name="success">/mail/page/contact/setmail_spam_blacklist_domain_list.jsp</result>
+		</action>
+		<action name="spam_whitelist_list" class="userAction" method="spam_whitelist_list">
+			<result name="success">/mail/page/contact/setmail_spam_whitelist_list.jsp</result>
+		</action>
+		<action name="spam_whitelist_domain_list" class="userAction" method="spam_whitelist_domain_list">
+			<result name="success">/mail/page/contact/setmail_spam_whitelist_domain_list.jsp</result>
+		</action>
+		
+		<!-- 邮箱设置 添加标签 -->
+		<action name="addTag" class="userAction" method="addTag">
+			<result name="success">/mail/page/contact/setmail.jsp</result>
+		</action>
+		
+		<!-- 邮箱设置  删除标签 -->
+		<action name="deleteTag" class="userAction" method="deleteTag">
+			<result name="success">/mail/page/contact/setmail.jsp</result>
+		</action>
+		<!-- 查询所有标签邮件 -->
+		<action name="gettagmail" class="userAction" method="gettagmail">
+			<result name="success">/mail/page/email/gettagmail.jsp</result>
+		</action>
+		<!-- 根据名字查询所有标签邮件 -->
+		<action name="getTagNameMail" class="userAction" method="getTagNameMail">
+			<result name="success">/mail/page/email/gettagmail.jsp</result>
+		</action>
+		
+		<!-- 根据条件删除标签邮件 -->
+		<action name="delTagNameMail" class="userAction" method="delTagNameMail">
+			<result name="success">/mail/page/email/gettagmail.jsp</result>
+		</action>
+		
+		<!-- 添加、修改签名 -->
+		<action name="modifySign" class="userAction" method="modifySign">
+			<result name="success" type="redirectAction">
+				<param name="actionName">setmail.html</param>
+				<param name="signstate">${#request.signstate}</param>				
+			</result>
+		</action>
+		<!-- 删除签名 -->
+		<action name="delSign" class="userAction" method="delSign">
+			<result name="success" type="redirectAction">
+				<param name="actionName">setmail.html</param>
+				<param name="signstate">${#request.signstate}</param>		
+			</result>
+		</action>
+		<!-- 设置默认名 -->
+		<action name="modifyDefaultSign" class="userAction" method="modifyDefaultSign"></action>
+		<!-- 清空默认名 -->
+		<action name="clearDefaultSign" class="userAction" method="clearDefaultSign"></action>
+	</package>
+		
+</struts>

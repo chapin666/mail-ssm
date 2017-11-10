@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+    "http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts>
+
+	<package name="Contact" extends="struts-default" namespace="/contact">
+
+		<action name="addContact" class="contactAction" method="addContact">
+			<result name="success">/mail/page/contact/addcontact.jsp</result>
+		</action>
+		
+		<action name="doAddContact" class="contactAction" method="doAddContact">
+			<result name="success" type="redirectAction">
+				getContactList.html
+			</result>
+		</action>
+		
+		<action name="doAddCong" class="contactAction" method="doAddCong">
+			<result name="success" type="redirectAction">
+				<param name="actionName">getContactList.html</param>
+				<!-- <param name="ugid">${cgid}</param>
+				<param name="name">${cname}</param> -->
+			</result>
+		</action>
+		
+		<action name="editContact" class="contactAction" method="editContact">
+			<result name="success">/mail/page/contact/editcontact.jsp</result>
+		</action>
+		
+		<action name="doEditContact" class="contactAction" method="doEditContact">
+			<result name="success" type="redirectAction">
+				getContactList.html
+			</result>
+		</action>
+		
+		<action name="deleteContact" class="contactAction" method="deleteContact">
+			<result name="success" type="redirectAction">
+				<param name="actionName">getContactList.html</param>
+				<param name="ugid">${cgid}</param>
+				<param name="name">${cname}</param>
+			</result>
+		</action>
+		
+		<action name="deleteCong" class="contactAction" method="deleteCong">
+		</action>
+		
+		<action name="getContactList" class="contactAction" method="getContactList">
+			<result name="success">/mail/page/contact/relation.jsp</result>
+		</action>
+		
+		<action name="checkAddrExist" class="contactAction" method="checkAddrExist">
+		</action>
+		
+		<action name="checkUserExist" class="contactAction" method="checkUserExist">
+		</action>
+		
+	</package>
+		
+</struts>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mail.mapper.TagMapper">
+	
+	<select id="checkNameExist" parameterType="Tag" resultType="Tag">
+		select * from tags where userid=#{userid} and name=#{name}
+	</select>
+	
+	<select id="getTag" parameterType="int" resultType="Tag">
+		select * from tags where id=#{id}
+	</select>
+	
+	<select id="getTagList" parameterType="int" resultType="Tag">
+		select * from tags where userid=#{userid}
+	</select>
+	
+	<update id="editTag" parameterType="Tag">
+		update tags
+		<set>  
+			<if test="name!=null and name!='' ">name=#{name}</if>
+    	</set>
+        where id=#{id}
+	</update>
+	
+	<insert id="addTag" parameterType="Tag">
+		insert into tags (userid,name) values (#{userid},#{name}) 
+	</insert>
+	
+	<delete id="deleteTag" parameterType="int">
+		delete from tags where id=#{id}
+	</delete>
+	
+	<delete id="delAll" parameterType="int">
+		delete from tags
+	</delete>
+	
+</mapper>

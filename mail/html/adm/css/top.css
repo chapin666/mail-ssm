@@ -1,0 +1,100 @@
+@CHARSET "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+	font-size: 12px;
+	font-family: "宋体";
+}
+body {
+	background: #EFEFEF;
+}
+a {
+    color: #1E5494;
+    cursor: pointer;
+    outline: medium none;
+    text-decoration: none;
+}
+a:hover {
+	color: #1E5494;
+    cursor: pointer;
+    outline: medium none;
+	text-decoration: underline;
+}	
+.main {
+	width: 100%;
+	height: 100%;
+}
+.content {
+	width: 960px;
+	margin: 0 auto;
+	text-align: center;
+	height: 60px;
+}	
+.logo {
+	width: 196px;
+	height: 37px;
+	display: inline;
+	border: none;
+	float: left;
+	margin: 10px 0px;
+}	
+.right {
+	height: 22px;
+	margin: 35px 0px 0px;
+	float: right;
+	line-height: 22px;
+}
+.right span {
+    border-right: 1px solid #999999;
+    float: left;
+    padding: 0 8px;
+    text-align: left !important;
+}
+.nav {
+    background-color: #315CA1;
+    height: 37px;
+    margin-bottom: 12px;
+    min-width: 960px;
+}
+ul.wd {
+    clear: both;
+    margin: 0 auto;
+    width: 960px;
+    list-style: none;
+}
+.nav li {
+    float: left;
+    list-style: none;
+}
+.nav ul li a.on {
+    background-color: #1E4789;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3) inset;
+    text-decoration: none;
+}
+.nav li a {
+    color: #FFFFFF;
+    display: inline-block;
+    font-size: 14px;
+    height: 37px;
+    line-height: 37px;
+    padding: 0 40px;
+}
+.nav li a:hover {
+    color: #FFFFFF;
+    text-decoration: none;
+    background: #1e4789;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

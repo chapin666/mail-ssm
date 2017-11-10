@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+    "http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts>
+
+	<package name="Tag" extends="struts-default" namespace="/tag">
+
+		<action name="addTag" class="tagAction" method="addTag">
+			<result name="success">/mail/page/contact/addtag.jsp</result>
+		</action>
+		
+		<action name="doAddTag" class="tagAction" method="doAddTag">
+			<result name="success" type="redirectAction">
+				<param name="actionName">getMail.html</param>
+				<param name="namespace">/email</param>
+			</result>
+		</action>
+		
+		<action name="doAddTag1" class="tagAction" method="doAddTag">
+			<result name="success" type="redirectAction">
+				<param name="actionName">fromMail.html</param>
+				<param name="namespace">/email</param>
+			</result>
+		</action>
+		
+		<action name="doAddTag2" class="tagAction" method="doAddTag">
+			<result name="success" type="redirectAction">
+				<param name="actionName">saveMail.html</param>
+				<param name="namespace">/email</param>
+			</result>
+		</action>
+		
+		<action name="doAddTag3" class="tagAction" method="doAddTag">
+			<result name="success" type="redirectAction">
+				<param name="actionName">delMail.html</param>
+				<param name="namespace">/email</param>
+			</result>
+		</action>
+		
+		<action name="doAddTag4" class="tagAction" method="doAddTag">
+			<result name="success" type="redirectAction">
+				<param name="actionName">News.html</param>
+				<param name="namespace">/email</param>
+			</result>
+		</action>
+		
+		<action name="doAddTag5" class="tagAction" method="doAddTag">
+			<result name="success" type="redirectAction">
+				<param name="actionName">getMainMail.html</param>
+				<param name="namespace">/email</param>
+			</result>
+		</action>
+		
+		<action name="doAddTag6" class="tagAction" method="doAddTag6">
+			<result name="success" type="redirectAction">
+				<param name="actionName">MailInfo.html</param>
+				<param name="namespace">/email</param>
+				<param name="id">${#request.eid}</param>
+				<param name="ftype">${#request.ftype}</param>
+			</result>
+		</action>
+		
+		
+		
+		<action name="doAddTag7" class="tagAction" method="doAddTag">
+			<result name="success" type="redirectAction">
+				<param name="actionName">getRubMail.html</param>
+				<param name="namespace">/email</param>
+			</result>
+		</action>
+		
+		
+		
+		
+		<action name="doAddETag" class="tagAction" method="doAddETag">
+			<result name="success" type="redirectAction">
+				<param name="actionName">getMail.html</param>
+				<param name="namespace">/email</param>
+				<param name="pagenow">${#request.pagenow}</param>
+				<param name="issee">${#request.issee}</param>
+				<param name="orbypage">${#request.orbypage}</param>
+				<param name="sortorderpage">${#request.sortorderpage}</param>
+			</result>
+		</action>
+		
+		<action name="doAddETag1" class="tagAction" method="doAddETag">
+			<result name="success" type="redirectAction">
+				<param name="actionName">fromMail.html</param>
+				<param name="namespace">/email</param>
+				<param name="pagenow">${#request.pagenow}</param>
+			</result>
+		</action>
+		
+		<action name="doAddETag2" class="tagAction" method="doAddETag">
+			<result name="success" type="redirectAction">
+				<param name="actionName">saveMail.html</param>
+				<param name="namespace">/email</param>
+				<param name="pagenow">${#request.pagenow}</param>
+			</result>
+		</action>
+		
+		<action name="doAddETag3" class="tagAction" method="deldoAddETag">
+			<result name="success" type="redirectAction">
+				<param name="actionName">delMail.html</param>
+				<param name="namespace">/email</param>
+				<param name="pagenow">${#request.pagenow}</param>
+			</result>
+		</action>
+		
+		
+		
+		<action name="doAddETag7" class="tagAction" method="rubmaildoAddETag">
+			<result name="success" type="redirectAction">
+				<param name="actionName">getRubMail.html</param>
+				<param name="namespace">/email</param>
+				<param name="pagenow">${#request.pagenow}</param>
+			</result>
+		</action>
+		
+		
+		
+		
+		<action name="doAddETag4" class="tagAction" method="doAddETag">
+			<result name="success" type="redirectAction">
+				<param name="actionName">News.html</param>
+				<param name="namespace">/email</param>
+			</result>
+		</action>
+		
+		<action name="doAddETag5" class="tagAction" method="doAddETag">
+			<result name="success" type="redirectAction">
+				<param name="actionName">getMainMail.html</param>
+				<param name="namespace">/email</param>
+			</result>
+		</action>
+		
+		<action name="doAddETag6" class="tagAction" method="doAddETag6">
+			<result name="success" type="redirectAction">
+				<param name="actionName">MailInfo.html</param>
+				<param name="namespace">/email</param>
+				<param name="id">${#request.eid}</param>
+				<param name="ftype">${#request.ftype}</param>
+			</result>
+		</action>
+		
+		<action name="deleteETag" class="tagAction" method="deleteETag">
+			<result name="success" type="redirectAction">
+				<param name="actionName">getMail.html</param>
+				<param name="namespace">/email</param>
+				<param name="pagenow">${#request.pagenow}</param>
+				<param name="issee">${#request.issee}</param>
+				<param name="orbypage">${#request.orbypage}</param>
+				<param name="sortorderpage">${#request.sortorderpage}</param>
+			</result>
+		</action>
+		
+		<action name="deleteETag1" class="tagAction" method="deleteETag">
+			<result name="success" type="redirectAction">
+				<param name="actionName">fromMail.html</param>
+				<param name="namespace">/email</param>
+				<param name="pagenow">${#request.pagenow}</param>
+			</result>
+		</action>
+		
+		<action name="deleteETag2" class="tagAction" method="deleteETag">
+			<result name="success" type="redirectAction">
+				<param name="actionName">saveMail.html</param>
+				<param name="namespace">/email</param>
+				<param name="pagenow">${#request.pagenow}</param>
+			</result>
+		</action>
+		
+		<action name="deleteETag3" class="tagAction" method="deleteETag">
+			<result name="success" type="redirectAction">
+				<param name="actionName">delMail.html</param>
+				<param name="namespace">/email</param>
+				<param name="pagenow">${#request.pagenow}</param>
+			</result>
+		</action>
+		
+		
+		
+		<action name="deleteETag7" class="tagAction" method="deleteETag">
+			<result name="success" type="redirectAction">
+				<param name="actionName">getRubMail.html</param>
+				<param name="namespace">/email</param>
+				<param name="pagenow">${#request.pagenow}</param>
+			</result>
+		</action>
+		
+		
+		
+		
+		
+		<action name="deleteETag4" class="tagAction" method="deleteETag">
+			<result name="success" type="redirectAction">
+				<param name="actionName">News.html</param>
+				<param name="namespace">/email</param>
+			</result>
+		</action>
+		
+		<action name="deleteETag5" class="tagAction" method="deleteETag">
+			<result name="success" type="redirectAction">
+				<param name="actionName">getMainMail.html</param>
+				<param name="namespace">/email</param>
+				<param name="pagenow">${#request.pagenow}</param>
+			</result>
+		</action>
+		
+		<action name="deleteETag6" class="tagAction" method="deleteETag6">
+			<result name="success" type="redirectAction">
+				<param name="actionName">MailInfo.html</param>
+				<param name="namespace">/email</param>
+				<param name="id">${#request.eid}</param>
+				<param name="ftype">${#request.ftype}</param>
+			</result>
+		</action>
+		
+		<action name="editTag" class="tagAction" method="editTag">
+			<result name="success">/mail/page/contact/edittag.jsp</result>
+		</action>
+		
+		<action name="doEditTag" class="tagAction" method="doEditTag">
+			<result name="success" type="redirectAction">
+				<param name="actionName">getContactList.html</param>
+				<param name="namespace">/contact</param>
+				<param name="ugid">${tag.id}</param>
+				<param name="name">${tag.name}</param>
+			</result>
+		</action>
+		
+		<action name="deleteTag" class="tagAction" method="deleteTag">
+		</action>
+		
+		<action name="getTagList" class="tagAction" method="getTagList">
+			<result name="success">/page/power/editPTag.jsp</result>
+		</action>
+		
+		<action name="checkNameExist" class="tagAction" method="checkNameExist">
+		</action>
+		
+		<!-- 查询所有标签 
+		<action name="getTags" class="tagAction" method="getTags">
+			<result name="success">/mail/page/index/left.jsp</result>
+		</action> -->
+		
+	</package>
+		
+</struts>

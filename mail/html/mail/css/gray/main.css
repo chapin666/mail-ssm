@@ -1,0 +1,1577 @@
+@CHARSET "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+	font-size: 12px;
+	font-family: "宋体";
+}	
+body {
+	background: url("/mail/images/gray/main_bg.jpg") repeat-x top left #fff;
+	overflow: hidden;
+}
+a {
+	color: #2a586f;
+	text-decoration: none;
+	outline: none;
+	cursor: pointer;
+}
+a:active {
+	star:expression(this.onFocus=this.blur());
+}
+a:hover {
+	color: #2a586f;
+	text-decoration: none;
+}
+.list a {
+	color: #000000;
+	text-decoration: none;
+	outline: none;
+	cursor: pointer;
+}
+.list_2 {
+    border: 1px solid #CCCCCC !important;
+    border-collapse: collapse;
+    margin: 0 auto;
+    width: 97%;
+}
+.list a:active {
+	star:expression(this.onFocus=this.blur());
+}
+.list a:hover {
+	color: #000000;
+	text-decoration: none;
+}
+.main {
+	width: 100%;
+	height: 100%;
+}
+.main .content {
+	margin: 12px 7px 12px 0;
+	padding-right: 7px;
+	overflow-y: scroll;
+	overflow-x: auto;
+}
+.main .content .button {
+	background: url("/mail/images/gray/write_top_bg.jpg") repeat-x;
+	height: 48px;
+	width: 100%;
+	text-align: left;
+}
+.main .content .button span {
+	width: auto;
+	height: 28px;
+	margin: 10px 5px;
+	float: left;
+}
+.main .content .button span.page {
+	width: 200px;
+	height: 28px;
+	margin: 10px 5px;
+	float: right;
+	cursor: pointer;
+	line-height: 28px;
+	text-align: right;
+}
+.main .content .button span.search {
+	width: 210px;
+	height: 28px;
+	float: right;
+}
+.main .content .button span.search input.input1 {
+	width: 140px;
+	height: 28px;
+	background: url("/mail/images/gray/input_bg.png") no-repeat;
+	float: left;
+	border: none;
+	padding: 0 5px;
+	line-height: 28px;
+	color: #555555;
+}
+.main .content .button span.search input.btn1 {
+	width: 54px;
+	height: 28px;
+	background: url("/mail/images/gray/relation_search.png") no-repeat;
+	float: left;
+	border: none;
+	padding: 0px;
+	cursor: pointer;
+}
+.main .content .button span.jgx {
+	width: 2px;
+	height: 28px;
+	margin: 10px 5px;
+	float: left;
+	background: url("/mail/images/gray/ico_jgx.jpg") no-repeat;
+}
+.main .content .button span select {
+	width: 100px;
+	height: 28px;
+	border: none;
+	background: url("/mail/images/gray/select_bg.png") no-repeat;
+	line-height: 28px;
+	padding: 6px;
+	color: #555555;
+	font-size: 12px;
+}
+.main .content .button span select option {
+	background: #f5f5f5;
+	padding: 3px;
+	color: #555555;
+	font-size: 12px;
+}
+.button span input.sendBtn {
+	width: 54px;
+	height: 28px;
+	background: url("/mail/images/gray/write_send.png") no-repeat;
+	border: none;
+	cursor: pointer;
+	margin-left: 5px;
+}
+.button span input.dingshiBtn {
+	width: 74px;
+	height: 28px;
+	background: url("/mail/images/gray/write_dingshi.png") no-repeat;
+	border: none;
+	cursor: pointer;
+}
+.button span input.cuncgBtn {
+	width: 61px;
+	height: 28px;
+	background: url("/mail/images/gray/write_cuncg.png") no-repeat;
+	border: none;
+	cursor: pointer;
+}
+.button span input.closeBtn {
+	width: 54px;
+	height: 28px;
+	background: url("/mail/images/gray/write_close1.png") no-repeat;
+	border: none;
+	cursor: pointer;
+}
+.button span input.xjBtn {
+	width: 54px;
+	height: 28px;
+	background: url("/mail/images/gray/relation_xj.png") no-repeat;
+	border: none;
+	cursor: pointer;
+}
+.button span input.bjzBtn {
+	width: 61px;
+	height: 28px;
+	background: url("/mail/images/gray/relation_bjz.png") no-repeat;
+	border: none;
+	cursor: pointer;
+}
+.button span input.bjzBtnOn {
+	width: 61px;
+	height: 28px;
+	background: url("/mail/images/gray/relation_bjz_on.png") no-repeat;
+	border: none;
+	cursor: inherit;
+}
+.button span input.xxBtn {
+	width: 54px;
+	height: 28px;
+	background: url("/mail/images/gray/relation_xx.png") no-repeat;
+	border: none;
+	cursor: pointer;
+}
+.button span input.deleteBtn {
+	width: 54px;
+	height: 28px;
+	background: url("/mail/images/gray/relation_delete.png") no-repeat;
+	border: none;
+	cursor: pointer;
+}
+
+.button span input.reportBtn {
+	width: 54px;
+	height: 28px;
+	background: url("/mail/images/gray/button_jb.png") no-repeat;
+	border: none;
+	cursor: pointer;
+}
+
+.button span input.deletegroupBtn {
+	width: 61px;
+	height: 28px;
+	background: url("/mail/images/gray/relation_deletegroup.png") no-repeat;
+	border: none;
+	cursor: pointer;
+}
+.button span input.deletegroupBtnOn {
+	width: 61px;
+	height: 28px;
+	background: url("/mail/images/gray/relation_deletegroup_on.png") no-repeat;
+	border: none;
+	cursor: inherit;
+}
+.button span input.cddeleteBtn {
+	width: 74px;
+	height: 28px;
+	background: url("/mail/images/gray/getmail_cddelete.png") no-repeat;
+	border: none;
+	cursor: pointer;
+}
+.button span input.deletecgBtn {
+	width: 74px;
+	height: 28px;
+	background: url("/mail/images/gray/savemail_deletecg.png") no-repeat;
+	border: none;
+	cursor: pointer;
+}
+.button span input.backBtn {
+	width: 61px;
+	height: 28px;
+	background: url("/mail/images/gray/go_back.png") no-repeat;
+	border: none;
+	cursor: pointer;
+}
+.button span input.zfBtn {
+	width: 54px;
+	height: 28px;
+	background: url("/mail/images/gray/getmail_zf.png") no-repeat;
+	border: none;
+	cursor: pointer;
+}
+.button span input.huifuBtn {
+	width: 54px;
+	height: 28px;
+	background: url("/mail/images/gray/huifu.png") no-repeat;
+	border: none;
+	cursor: pointer;
+}
+.button span input.rewriteBtn {
+	width: 54px;
+	height: 28px;
+	background: url("/mail/images/gray/rewrite.png") no-repeat;
+	border: none;
+	cursor: pointer;
+}
+.button span input.getbackBtn {
+	width: 54px;
+	height: 28px;
+	background: url("/mail/images/gray/getback.png") no-repeat;
+	border: none;
+	cursor: pointer;
+}
+
+.button span input.qbbwydBtn {
+	width: 100px;
+	height: 28px;
+	background: url("/mail/images/gray/getmail_qbbwyd.png") no-repeat;
+	border: none;
+	cursor: pointer;
+}
+.button span input.bsljBtn {
+	width: 100px;
+	height: 28px;
+	background: url("/mail/images/gray/rubmail_bslj.png") no-repeat;
+	border: none;
+	cursor: pointer;
+}
+.main .content .mail {
+	background: #ffffff;
+	height: 670px;
+	width: 100%;
+	text-align: left;
+	overflow: hidden;
+}
+.main .content .infomail {
+	background: #ffffff;
+	height: auto;
+	min-height: 320px;
+	width: 100%;
+	text-align: left;
+	overflow: hidden;
+}
+.main .content .mailBG {
+	background: #f2f2f2;
+	height: 670px;
+	width: 100%;
+	text-align: left;
+}
+.main .content .mail ul.theme {
+	list-style: none;
+	padding: 10px 0px 0px 25px;
+	line-height: 26px;
+	width: 800px;
+	float: left;
+}
+.main .content .mail ul.relation {
+	list-style: none;
+	padding: 5px 0px;
+	line-height: 26px;
+	width: 940px;
+	float: left;
+}
+.main .content .mail div.mailcontent {
+	padding: 10px 0px;
+	width: 100%;
+	float: left;
+	background: #FFFFFF;
+	min-height: 200px;
+}
+.main .content .mail ul.mailinfo {
+	list-style: none;
+	padding: 5px 0px;
+	line-height: 26px;
+	width: 100%;
+	float: left;
+	height: 90px;
+	border-top: 1px solid #FFFFFF;
+	background: #F2F2F2;
+	border-bottom: 1px solid #B8B8B8;
+}
+.main .content .mail ul.mailinfo li {
+	list-style: none;
+	line-height: 18px;
+	width: 100%;
+	float: left;
+	height: 18px;
+	margin: 1px;
+}
+.main .content .mail ul.mailinfo li.ptitle {
+	line-height: 30px;
+	height: 30px;
+}
+.main .content .mail ul.mailinfo li p {
+	padding-left: 15px;
+	color: #7A8F99;
+	height: 18px;
+	line-height: 18px;
+}
+.main .content .mail ul.mailinfo li p label {
+	color: #5FA207;
+	font-weight: bold;
+	float: none;
+}
+.main .content .mail ul.mailinfo li p.title {
+	height: 30px;
+	width: 100%;
+	text-align: left;
+	line-height: 30px;
+	margin: 0px;
+	font-size: 14px;
+}
+.main .content .mail ul.mailinfo li p.title b {
+	display: inline;
+	font-size: 15px;
+	color: #222b30;
+	padding: 0px; 
+}
+
+.main .content .mail ul.relation li {
+	list-style: none;
+	line-height: 26px;
+	width: 100%;
+	float: left;
+	height: 26px;
+	padding: 0px;
+	margin: 0px;
+	background: #FFFFFF;
+}
+
+.main .content .mail ul.relation li:HOVER {
+	list-style: none;
+	line-height: 26px;
+	width: 100%;
+	float: left;
+	height: 26px;
+	padding: 0px;
+	margin: 0px;
+	background: #F3F3F3;
+}
+
+.main .content .mail ul.relation li span {
+	line-height: 22px;
+	width: auto;
+	float: left;
+	height: 22px;
+	padding: 1px 10px;
+	background: none;
+	border: 1px solid #c5c6c8;
+	border-top: none;
+}
+.main .content .mail ul.relation li span label {
+	line-height: 18px;
+	width: auto;
+	float: right;
+	height: 18px;
+	padding: 1px 10px;
+	background: #35909E;
+	border-radius: 3px 3px 3px 3px;
+    color: #FFFFFF;
+    margin: 1px 0 0 2px;
+    cursor: pointer;
+}
+.main .content .mail ul.relation li.title {
+	background: #f4f4f4;
+}
+.main .content .mail ul.relation li.getmailbt {
+	background: #f4f4f4;
+}	
+.main .content .mail ul.relation li.title span {
+	border-top: 1px solid #c5c6c8;
+}
+.main .content .mail ul.relation li.top span {
+	border-top: 2px solid #c5c6c8;
+	height: 21px;
+	line-height: 21px;
+}
+.main .content .mail ul.relation li span.span1 {
+	width: 30px;
+	border-left: none;
+}
+.main .content .mail ul.relation li span.span1 input {
+	width: 12px;
+	height: 12px;
+	border: none;
+	margin: 4px 8px;
+}
+.main .content .mail ul.relation li span.span2 {
+	width: 100px;
+	border-left: none;
+}
+.main .content .mail ul.relation li span.span21 {
+	width: 50px;
+	border-left: none;
+}
+.main .content .mail ul.relation li span.span22 {
+	width: 50px;
+	border-left: none;
+	border-right: none;
+}
+.main .content .mail ul.relation li span.span3 {
+	width: 200px;
+	border-left: none;
+}
+.main .content .mail ul.relation li span.span4 {
+	width: 250px;
+	border-left: none;
+	border-right: none;
+}
+.main .content .mail ul.relation li span.span5 {
+	width: 100px;
+	border-left: none;
+	border-right: none;
+}
+.main .content .mail ul.relation li span.span50 {
+	width: 160px;
+	border-left: none;
+	border-right: none;
+}
+.main .content .mail ul.relation li label.main1 {
+	float: right;
+	height: 14px;
+    width: 14px;
+    background: url("/mail/images/gray/mail.png") no-repeat -48px -160px;
+    border: none;
+    line-height: 14px;
+    padding: 0px;
+    margin: 3px 0 0 0;
+}
+.main .content .mail ul.relation li label.main2 {
+	float: right;
+	height: 14px;
+    width: 14px;
+    background: url("/mail/images/gray/mail.png") no-repeat -32px -160px;
+    border: none;
+    line-height: 14px;
+    padding: 0px;
+    margin: 3px 0 0 0;
+}
+.main .content .mail ul.relation li span.span6 {
+	width: 250px;
+	border-left: none;
+	border-right: none;
+}
+.main .content .mail ul.relation li span.span7 {
+	width: 30px;
+	border-left: none;
+	border-right: none;
+}
+.main .content .mail ul.relation li span.span7 input {
+	width: 12px;
+	height: 12px;
+	border: none;
+	margin: 4px 8px;
+}
+.main .content .mail ul.relation li span.span8 {
+	width: 200px;
+	border-left: none;
+	border-right: none;
+}
+.main .content .mail ul.relation li span.span9 {
+	width: 250px;
+	border-left: none;
+}
+.main .content .mail span.ico {
+	list-style: none;
+	margin: 238px 10px 0px 0px;
+	line-height: 9px;
+	width: 5px;
+	border: none;
+	height: 9px;
+	padding: 0px;
+	overflow: hidden;
+	background: none;
+	float: right;
+	display: inline;
+	cursor: pointer;
+}
+.main .content .mail span.ico input {
+	margin: 0px;
+	width: 5px;
+	border: none;
+	height: 9px;
+	padding: 0px;
+	overflow: hidden;
+	background: none;
+	background: url("/mail/images/gray/ico_write.png") no-repeat -5px 0;
+	cursor: pointer;
+	font-size: 1px;
+}
+.main .content .mail span.ico input.on {
+	background: url("/mail/images/gray/ico_write.png") no-repeat 0 0;
+}
+.main .content .mail ul.lxrList {
+	list-style: none;
+	margin: 38px 0px 0px 0px;
+	line-height: 26px;
+	width: 180px;
+	border: 1px solid #b8b8b8;
+	height: 404px;
+	padding: 0px;
+	overflow: hidden;
+	background: #ffffff;
+	float: right;
+}
+.main .content .mail ul.lxrList li {
+	list-style: none;
+	width: 170px;
+	height: 28px;
+	line-height: 28px;
+	padding: 0 5px;
+}
+
+/* .main .content .mail ul.lxrList li.input {
+    font-size: 12px;
+    height: 14px;
+    line-height: 16px;
+    padding: 7px 0 7px 2px;
+    width: 157px;
+}
+li.input.txt {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-color: #C0C0C0 #BFBFBF #BFBFBF;
+    border-image: none;
+    border-style: solid;
+    border-width: 1px;
+    color: #A0A0A0;
+    font-weight: lighter;
+    outline: medium none;
+    text-indent: 5px;
+}
+ */
+/*  .main .content .mail ul.lxrList li input {
+ 	margin: 0;
+    font-size: 12px;
+    height: 10px;
+    line-height: 16px;
+    padding: 7px 0 4px 2px;
+    width: 130px;
+}
+input.txt {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-color: #C0C0C0 #BFBFBF #BFBFBF;
+    border-image: none;
+    border-style: solid;
+    border-width: 1px;
+    color: #A0A0A0;
+    font-weight: lighter;
+    outline: medium none;
+    text-indent: 5px;
+}
+
+ .main .content .mail ul.lxrList li .btnSearch {
+    background: url("/mail/images/gray/lxr_search_bg2.jpg")no-repeat top center;
+    border-style: none none none solid;
+    border-width: medium medium medium 1px;
+    color: #1E5494;
+    cursor: pointer;
+    height: 26px;
+    outline: medium none;
+    position: absolute;
+    text-decoration: none;
+    width: 26px;
+} */
+
+.main .content .mail ul.lxrList li.input {
+	width: 165px;
+	height: 20px;
+	line-height: 20px;
+	padding: 4px auto;
+	background: url("/mail/images/gray/lxr_search_bg.jpg") no-repeat top center;
+	margin: 5px 0; 
+}
+
+.main .content .mail ul.lxrList li.input input {
+	width: 141px;
+	height: 20px;
+	line-height: 20px;
+	padding: 0px 2px;
+	border: none;
+	background: none;
+}
+.main .content .mail ul.lxrList li.title {
+	list-style: none;
+	width: 170px;
+	height: 24px;
+	line-height: 24px;
+	padding: 0 5px;
+	border-top: 1px solid #b8b8b8;
+	border-bottom: 1px solid #b8b8b8;
+	background: #f2f2f2;
+}
+.main .content .mail ul.lxrList li ul {
+	list-style: none;
+	width: 170px;
+	height: 380px;
+	line-height: 24px;
+	padding: 0;
+	margin: 0px;
+	cursor: pointer;
+	overflow: auto;
+}
+.main .content .mail ul.lxrList li.listTitle {
+	list-style: none;
+	width: 138px;
+	height: 24px;
+	line-height: 24px;
+	padding: 0 5px;
+	color: #2a586f;
+	font-weight: bold;
+	margin: 5px 0 0 5px;
+	cursor: pointer;
+}
+.main .content .mail ul.lxrList li.listTitle label.zhankai {
+	width: 9px;
+	height: 9px;
+	background: url("/mail/images/gray/lxr_search_bg_sf.jpg") no-repeat 0 0;
+	float: left;
+	margin: 7px 5px 0px 0px;
+	cursor: pointer;
+}
+.main .content .mail ul.lxrList li.listTitle label.shousuo {
+	width: 9px;
+	height: 9px;
+	background: url("/mail/images/gray/lxr_search_bg_sf.jpg") no-repeat 0 -9px;
+	float: left;
+	margin: 7px 5px 0px 0px;
+	cursor: pointer;
+}
+.main .content .mail ul.lxrList li.list {
+	list-style: none;
+	width: 130px;
+	line-height: 24px;
+	padding: 0 0 0 23px;
+	color: #494949;
+	height: auto;
+}
+.main .content .mail ul.lxrList li.list ul {
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+	width: 134px;
+	height: auto;
+}
+.main .content .mail ul.lxrList li.list ul li {
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+	line-height: 22px;
+	width: 134px;
+	height: 22px;
+}
+.main .content .mail ul.theme li {
+	list-style: none;
+	line-height: 26px;
+	width: 100%;
+	float: left;
+}
+.main .content .mail ul.theme li label {
+	float: left;
+	line-height: 26px;
+	height: 26px;
+}
+.main .content .mail ul.theme li label.title {
+	float: left;
+	width: 50px;
+	text-align: left;
+}
+.main .content .mail ul.theme li label.input {
+	float: left;
+	text-align: left;
+	width: auto;
+}
+.main .content .mail ul.theme li label.input a {
+	line-height: 26px;
+	height: 26px;
+	display: inline;
+}
+.main .content .mail ul.theme li label.input a img {
+	width: 13px;
+	height: 13px;
+	float: left;
+	margin: 6px 6px 6px 0;
+}
+.main .content .mail ul.theme li label.input input.input1 {
+	width: 740px;
+	height: 20px;
+	line-height: 20px;
+	border-bottom: 1px solid #c3c3c3;
+	border-right: 1px solid #c3c3c3;
+	border-top: 1px solid #7c7c7c;
+	border-left: 1px solid #9a9a9a;
+	padding: 0px 2px;
+	margin: 2px 0;
+}
+.main .content .mail ul.theme li label.input textarea {
+	width: 740px;
+	height: 300px;
+}
+
+.main .content p.title {
+	height: 30px;
+	width: 100%;
+	text-align: left;
+	line-height: 30px;
+	padding: 0px;
+	margin: 0px;
+	font-size: 14px;
+}
+.main .content p.title b {
+	padding-left: 8px;
+	display: inline;
+	font-size: 14px;
+	color: #222b30;
+}
+
+.main .content .mail ul.relation li.bt {
+	height: 30px;
+	width: 100%;
+	text-align: left;
+	line-height: 30px;
+	padding: 0px;
+	margin: 0px;
+	font-size: 14px;
+}
+.main .content .mail ul.relation li.bt b{
+	padding-left: 8px;
+	display: inline;
+	font-size: 14px;
+	color: #2d5d74;
+}
+
+.main .content .mail ul.relation li.bottom {
+	height: 30px;
+	width: 100%;
+	text-align: left;
+	line-height: 30px;
+	padding: 0px;
+	margin: 0px;
+	font-size: 12px;
+	background: #F4F4F4;
+}
+.main .content .mail ul.relation li.bottom label {
+	color: #7A8F99;
+	padding-left: 8px;
+}
+.main .content .mail ul.relation li.bottom a, .main .content .button span.page a {
+	color: #2A586F;
+	text-decoration: none;
+}
+.main .content .mail ul.relation li.bottom a:hover, .main .content .button span.page a:hover {
+	color: #2A586F;
+	text-decoration: underline;
+}
+.tiaozhuan {
+	width: 180px;
+	height: 50px;
+	background: #ffffff;
+    border: 1px solid #C5C6C8;
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+    outline: 0 none;
+    position: absolute;
+    right: 30px;
+    top: 80px;
+    line-height: 50px;
+    text-align: center;
+    display: none;
+}
+.tiaozhuan input.ipt1 {
+	width: 32px;
+	height: 20px;
+	background: #ffffff;
+    border-bottom: 1px solid #c3c3c3;
+	border-right: 1px solid #c3c3c3;
+	border-top: 1px solid #7c7c7c;
+	border-left: 1px solid #9a9a9a;
+	padding: 0px;
+	margin: 0px;
+	line-height: 20px;
+}
+
+.tiaozhuan input.qdBtn {
+	width: 46px;
+	height: 22px;
+    border: none;
+    background: url("/mail/images/gray/button_qd.png") no-repeat;
+    cursor: pointer;
+}
+
+.main .content .mail ul.relation li span label.ico1 ,.ico1{
+	background: url("/mail/images/gray/mail.png") no-repeat -48px 0;
+	width: 18px;
+	height: 16px;
+	float: left;
+	margin: 2px 1px 0 0;
+	padding:0px;
+}
+
+.main .content .mail ul.relation li span label.ico2 {
+	background: url("/mail/images/gray/mail.png") no-repeat -48px -16px;
+	width: 18px;
+	height: 16px;
+	float: left;
+	margin: 2px 1px 0 0;
+	padding:0px;
+}
+.main .content .mail ul.relation li span label.ico3 {
+	background: url("/mail/images/gray/mail_ico.png") no-repeat 0 -22px;
+	width: 7px;
+	height: 10px;
+	float: left;
+	margin: 6px 5px 0 0;
+	padding:0px;
+}
+.main .content .mail ul.relation li span label.ico4 {
+	background: url("/mail/images/gray/mail.png") no-repeat 0px -80px;
+	width: 32px;
+	height: 16px;
+	float: left;
+	margin: 2px 1px 0 0;
+	padding:0px;
+}
+.main .content .mail ul.relation li span label.sending {
+	background: url("/mail/images/gray/mail.png") no-repeat  -127px -123px;
+	width: 18px;
+	height: 16px;
+	float: left;
+	margin: 2px 1px 0 0;
+	padding:0px;
+}
+.main .content .mail ul.relation li span label.sendsucess {
+	background: url("/mail/images/gray/mail.png") no-repeat -95px -123px;
+	width: 18px;
+	height: 16px;
+	float: left;
+	margin: 2px 1px 0 0;
+	padding:0px;
+}
+.main .content .mail ul.relation li span label.sendfail {
+	background: url("/mail/images/gray/mail.png") no-repeat -63px -123px;
+	width: 18px;
+	height: 16px;
+	float: left;
+	margin: 2px 1px 0 0;
+	padding:0px;
+}
+
+.main .content .mail ul.mailinfo li span {
+	float: left;
+}
+
+.main .content .mail ul.mailinfo li span.ico3 {
+	background: url("/mail/images/gray/mail_ico.png") no-repeat 0 -22px;
+	width: 7px;
+	height: 10px;
+	margin: 4px;
+	padding:0px;
+}
+.createlabel {
+	width: 440px;
+	height: 188px;
+	background: #ffffff;
+    border: 1px solid #AAAAAA;
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+    outline: 0 none;
+    position: absolute;
+    left: 300px;
+    top: 90px;
+    text-align: left;
+    display: none;
+}
+.reportmail {
+	width: 440px;
+	height: 188;
+	background: #ffffff;
+    border: 1px solid #AAAAAA;
+    border-radius: 5px 5px 7px 7px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+    outline: 0 none;
+    position: absolute;
+    left: 300px;
+    top: 90px;
+    text-align: left;
+    display: none;
+}
+.DoRecall{
+	width: 460px;
+	height: 249px;
+	background: #ffffff;
+    border: 1px solid #AAAAAA;
+    border-radius: 5px 5px 7px 7px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+    outline: 0 none;
+    position: absolute;
+    left: 300px;
+    top: 90px;
+    text-align: left;
+    display: none;
+}
+.recalltext
+{
+	padding: 18px 0 18px 25px;
+	line-height: 1.9;
+	text-align: left;
+	font-family: "lucida Grande",Verdana;
+}
+.icon_info_b {
+	text-align: left;
+	float: left;
+    margin: 7px 12px 8px 0px;
+    width: 32px;
+    height: 32px;
+    background: url("/mail/images/gray/prompt104472.png") no-repeat scroll -96px 0px transparent;
+}
+.icon_ok_b {
+	text-align: left;
+	float: left;
+    margin: 7px 12px 8px 0px;
+    width: 32px;
+    height: 32px;
+    background: url("/mail/images/gray/prompt104472.png") no-repeat scroll -0px -48px transparent;
+}
+.createlabelmember {
+	width: 440px;
+	height: 300px;
+	background: #ffffff;
+    border: 1px solid #AAAAAA;
+    border-radius: 5px 5px 7px 7px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+    outline: 0 none;
+    position: absolute;
+    left: 300px;
+    top: 65px;
+    text-align: left;
+    display: none;
+}
+.createlabel_head {
+    background-color: #EAEAEA;
+    border-bottom: 1px solid #CCCCCC;
+    border-radius: 5px 5px 0 0;
+    font-weight: bold;
+    line-height: 25px;
+    padding: 5px 15px;
+}
+.createlabel_body {
+    padding: 30px;
+    text-align: left;
+}
+.createlabel_bottom {
+    background-color: #EAEAEA;
+    border-radius: 0 0 6px 6px;
+    border-top: 1px solid #CCCCCC;
+    line-height: 25px;
+    padding: 5px 12px;
+    text-align: right;
+}
+.createlabel .createlabel_head a.createlabel_close,.createlabelmember .createlabel_head a.createlabel_close {
+    background: url("/mail/images/gray/mail.png") no-repeat -18px -240px;
+    border-radius: 2px 2px 2px 2px;
+    height: 18px;
+    position: absolute;
+    right: 10px;
+    top: 9px;
+    width: 18px;
+}
+.createlabel .createlabel_head a.createlabel_close:hover,.createlabelmember .createlabel_head a.createlabel_close:hover {
+    background: url("/mail/images/gray/mail.png") no-repeat -54px -240px;
+    border-radius: 2px 2px 2px 2px;
+    height: 18px;
+    position: absolute;
+    right: 10px;
+    top: 9px;
+    width: 18px;
+}
+.createlabel_body label {
+	height: 26px;
+	line-height: 26px;
+	padding: 0px;
+	margin: 4px 5px;
+	float: left;
+}	
+.createlabel_body input.createlabel_input {
+	background-color: #FFFFFF;
+    border: 1px solid #B3B3B3;
+    box-shadow: 1px 1px 0 #E2E2E2 inset;
+    font-size: 12px;
+    height: 14px;
+    margin: 4px 0;
+    padding: 5px;
+    width: 368px;
+}
+.createlabel_body select.createlabel_select {
+	background-color: #FFFFFF;
+    border: 1px solid #B3B3B3;
+    box-shadow: 1px 1px 0 #E2E2E2 inset;
+    float: left;
+    font-size: 14px;
+    height: 26px;
+    margin: 4px 0 0 0;
+    padding: 3px;
+    width: 68px;
+}
+.createlabel_body select.createlabel_select option {
+	line-height: 26px;
+	font-size: 14px;
+	padding: 2px;
+}	
+.createlabel_body input.memberinput {
+    width: 328px;
+}
+.createlabel_body input.createlabel_input:focus {
+    border-color: #93D4FC;
+    box-shadow: 0 0 5px #60CAFF;
+    outline: 0 none;
+}
+
+.createlabel_bottom input.btn_blue {
+    margin-left: 6px;
+    min-width: 30px;
+    cursor: pointer;
+    height: 24px;
+    line-height: 22px;
+    padding: 0 15px 1px;
+    background: -moz-linear-gradient(center top , #FFFFFF, #E0E0E0) repeat;
+    border: 1px solid #BEBEBE;
+    color: #494949 !important;
+    border-radius: 3px 3px 3px 3px;
+    display: inline-block;
+    text-align: center;
+}
+.createlabel_bottom input.btn_gray {
+    margin-left: 6px;
+    min-width: 30px;
+    cursor: pointer;
+    height: 24px;
+    line-height: 22px;
+    padding: 0 15px 1px;
+    background: -moz-linear-gradient(center top , #FFFFFF, #E0E0E0) repeat;
+    border: 1px solid #BEBEBE;
+    color: #494949 !important;
+    border-radius: 3px 3px 3px 3px;
+    display: inline-block;
+    text-align: center;
+}
+.createugrouplist {
+	height: 100px;
+	overflow: hidden;	
+}	
+.createugrouplist input, .createugrouplist label {
+	float: left;	
+}	
+.createugrouplist ul {
+	list-style: none;
+	width: 338px;
+	height: 98px;
+	overflow-y: auto;
+	overflow-x: hidden;
+	border: 1px solid #B3B3B3;
+	float:left;
+}	
+.createugrouplist ul li {
+	list-style: none;
+	width: 158px;
+	height: 26px;
+	line-height: 26px;
+	float: left;
+	padding-left: 10px;
+}	
+.createugrouplist ul li input {
+	float: left;
+	height: 12px;
+	width: 12px;
+	margin: 7px 3px 7px 0;
+}
+
+.editlabel {
+	width: 440px;
+	height: 188px;
+	background: #ffffff;
+    border: 1px solid #AAAAAA;
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+    outline: 0 none;
+    position: absolute;
+    left: 300px;
+    top: 90px;
+    text-align: left;
+    display: none;
+}
+.editlabel_head {
+    background-color: #EAEAEA;
+    border-bottom: 1px solid #CCCCCC;
+    border-radius: 5px 5px 0 0;
+    font-weight: bold;
+    line-height: 25px;
+    padding: 5px 15px;
+}
+.editlabel_body {
+    padding: 30px;
+    text-align: left;
+}
+.editlabel_bottom {
+    background-color: #EAEAEA;
+    border-radius: 0 0 6px 6px;
+    border-top: 1px solid #CCCCCC;
+    line-height: 25px;
+    padding: 5px 12px;
+    text-align: right;
+}
+.editlabel .editlabel_head a.editlabel_close {
+    background: url("/mail/images/gray/mail.png") no-repeat -18px -240px;
+    border-radius: 2px 2px 2px 2px;
+    height: 18px;
+    position: absolute;
+    right: 10px;
+    top: 9px;
+    width: 18px;
+}
+.editlabel .editlabel_head a.editlabel_close:hover {
+    background: url("/mail/images/gray/mail.png") no-repeat -54px -240px;
+    border-radius: 2px 2px 2px 2px;
+    height: 18px;
+    position: absolute;
+    right: 10px;
+    top: 9px;
+    width: 18px;
+}
+.editlabel_body input.editlabel_input {
+	background-color: #FFFFFF;
+    border: 1px solid #B3B3B3;
+    box-shadow: 1px 1px 0 #E2E2E2 inset;
+    font-size: 12px;
+    height: 14px;
+    margin: 4px 0;
+    padding: 5px;
+    width: 368px;
+}
+.editlabel_body input.editlabel_input:focus {
+    border-color: #93D4FC;
+    box-shadow: 0 0 5px #60CAFF;
+    outline: 0 none;
+}
+
+.editlabel_bottom input.btn_blue {
+    margin-left: 6px;
+    min-width: 30px;
+    cursor: pointer;
+    height: 24px;
+    line-height: 22px;
+    padding: 0 15px 1px;
+    background: -moz-linear-gradient(center top , #238ACA, #0074BC) repeat;
+    border: 1px solid #0D659B;
+    color: #FFFFFF !important;
+    border-radius: 3px 3px 3px 3px;
+    display: inline-block;
+    text-align: center;
+}
+.editlabel_bottom input.btn_gray {
+    margin-left: 6px;
+    min-width: 30px;
+    cursor: pointer;
+    height: 24px;
+    line-height: 22px;
+    padding: 0 15px 1px;
+    background: -moz-linear-gradient(center top , #FFFFFF, #E0E0E0) repeat;
+    border: 1px solid #BEBEBE;
+    color: #494949 !important;
+    border-radius: 3px 3px 3px 3px;
+    display: inline-block;
+    text-align: center;
+}
+
+
+.main .content .mail ul.lxrList li.list ul li.mailgroup {
+	width: 100%;
+	height: 24px;
+	line-height: 24px;
+	float: left;
+}
+.main .content .mail ul.lxrList li.list ul li.mailgroupsmall {
+	height: 24px;
+	line-height: 24px;
+	padding-left: 18px;
+	float: left;
+	width: 115px;
+}
+.mailgroup a {
+	width: auto;
+	height: 24px;
+	line-height: 24px;
+	text-decoration: none;
+	float: left;
+}
+.mailgroup a:hover {
+	text-decoration: underline;
+}
+.mailgroup img {
+	height: 18px;
+	width: 18px;
+	margin-top: 3px;
+	display: inline;
+	float: left;
+}
+
+.success_content {
+	margin: 20px 0 0 20px;
+}
+.success_content_img {
+	float: left;
+	margin: -2px 4px 0 0;
+}
+.success_content_div {
+	margin-left: 50px;
+	color: #7A8F99;
+}
+.success_content_div b {
+	color: #4A8F00;
+	font: bold 16px Verdana;
+}	
+.settingtable {
+    border-radius: 5px 5px 5px 5px;
+    margin: 10px 0px 10px 50px;
+    width: 550px;
+    border: 1px solid #BFBFBF;
+    background: #F2F2F2;
+    padding: 13px 15px 10px;
+}
+.settingtable ul {
+	margin: 5px 0px 5px 15px;
+}	
+.settingtable ul li {
+	width: 100%;
+	height: 26px;
+	line-height: 26px;
+}	
+.success_btn {
+	height: 30px;
+	line-height: 30px;
+	margin-left: 50px;
+}	
+.success_btn span, .success_btn a {
+	float: left;
+}
+.success_btn span {
+    min-width: 70px;
+    cursor: pointer;
+    height: 24px;
+    line-height: 24px;
+    padding: 0 15px;
+    background: #6ea639 ;
+    border: 1px solid #33561c;
+    color: #FFFFFF !important;
+    border-radius: 3px 3px 3px 3px;
+    display: inline-block;
+    text-align: center;
+}
+.success_btn a {
+    height: 30px;
+	line-height: 30px;
+	margin-left: 10px;
+	color: #2e5363;
+	text-decoration: none;
+}
+.success_btn a:hover {
+	color: #2e5363;
+	text-decoration: underline;
+}
+
+
+
+
+
+.contentright {
+    margin-bottom: 16px;
+    height: auto;
+    width: 100%;
+}
+.contentright h1 {
+    border-bottom: 1px dashed #D4D4D4;
+    font-size: 20px;
+    line-height: 30px;
+    margin: 0 0 20px;
+    overflow: hidden;
+    padding-bottom: 15px;
+    font-weight: bold;
+    text-align: left !important;
+    width: 100%;
+    height: 30px;
+    float: left;
+}
+.logoright {
+	height: 100%;
+	width: 100%;
+	float: left;
+	border-bottom: 1px solid #DFDFDF;
+}
+.logoright span {
+	float: left;
+	line-height: 40px;
+	margin-right: 20px;
+}	
+.logoright span.s1 {
+	width: 120px;
+	text-align: right;
+	color: #A0A0A0;
+	font-size: 14px;
+}	
+.logoright span.s2 {
+	width: 200px;
+	text-align: left;
+	height: 37px;
+	margin-top: 1px; 
+}
+.logoright span.domain {
+	width: 400px;
+	text-align: left;
+	color: #5A5A5A;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+	margin-left: 20px; 
+	font-family: "lucida Grande",Verdana;
+}
+.logoright span.domain3 {
+	float: right;
+	margin-right: 20px;
+	margin-top: 2px;
+}
+.logoright span.s3 {
+    background-color: #FCFBFB;
+    background-image: -moz-linear-gradient(center top , #FFFFFF, #E1E1E1);
+    border: 1px solid #D3D3D3;
+    border-radius: 2px 2px 2px 2px;
+    color: #000000;
+    font-size: 12px;
+    height: 26px;
+    line-height: 26px;
+    padding: 0 10px;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    width: 42px;
+    margin-top: 5px;
+}
+.logoright span.s3:hover {
+    background-color: #F9F9F9;
+    background-image: -moz-linear-gradient(center top , #FFFFFF, #EFEFEF);
+    text-decoration: none;
+}
+.logoright span.s3 label {
+	float: left;
+	background: url("/adm/images/index/icon_action.png") no-repeat -120px -18px;
+    height: 16px;
+    width: 13px;
+    margin-top: 5px;
+}
+.logoright span.s4 {
+	width: 700px;;
+	float: left;
+	text-align: left;
+	color: #707070;
+	font-size: 12px;
+	margin-left: 20px;
+	line-height: 26px;
+}
+.logoright span.s4 label {
+	float: left;
+	background: url("/adm/images/index/main_ico.gif") no-repeat  0 -32px;
+    height: 16px;
+    width: 16px;
+    margin-top: 5px;
+    margin-right: 3px;
+}
+.logoright p {
+	width: 1400px;
+	margin: 5px 20px;
+	line-height: 24px;
+	float: left;
+}
+.logoright p span {
+	float: left;
+	text-align: left;
+	line-height: 24px;
+}
+.logoright p span.sp1 {
+	width: 120px;
+	text-align: right;
+	margin-right: 20px;
+	color: #A0A0A0;
+	font-size: 14px;
+	line-height: 26px;
+}
+.logoright p span.sp2 {
+	margin-right: 10px;
+    text-align: left;
+    width: 280px;
+}
+.logoright p span.sp3 {
+	width: 180px;
+	text-align: left;
+	margin-left: 0px;
+	color: #FF0000;
+	font-size: 12px;
+	line-height: 26px;
+	margin-right: 0px;
+}
+.logoright p span.sp3 label {
+	float: left;
+	background: url("/adm/images/index/main_ico.gif") no-repeat -16px -32px;
+    height: 16px;
+    width: 16px;
+    margin-top: 5px;
+    margin-right: 3px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.logoright p span.sp3 label.l1 {
+	float: left;
+	background: url("/adm/images/index/main_ico.gif") no-repeat 0 -32px;
+    height: 16px;
+    width: 16px;
+    margin-top: 5px;
+    margin-right: 3px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.logoright p input.pwd1 {
+	background: #FFFFFF;
+	border-color: #C0C0C0 #BFBFBF #BFBFBF;
+    border-image: none;
+    border-right: 1px solid #BFBFBF;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    font-weight: lighter;
+    height: 24px;
+    line-height: 24px;
+    outline: medium none;
+    marker-offset: 0;
+    width: 280px;
+    padding: 0 0 0 2px;
+    font-family: "lucida Grande",Verdana;
+}
+.logoright p input.pwd1:focus {
+	border-color: rgba(82,168,236,0.75);
+	box-shadow: 0 0 8px rgba(82,168,236,0.5);
+}
+.main .content .logoright .buttonpwd {
+    background-color: #5890e5;
+    background-image: -moz-linear-gradient(center top , #6698ef, #4770ca);
+    border: 1px solid #588ae1;
+    border-radius: 3px 3px 3px 3px;
+    color: #FFFFFF;
+    font-size: 12px;
+    height: 28px;
+    line-height: 28px;
+    padding: 0 10px;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    width: 80px;
+    margin: 42px 0 0 142px;
+    font-weight: bold;
+}
+.main .content .logoright .buttonpwd:hover {
+    background-color: #619aef;
+    background-image: -moz-linear-gradient(center top , #6698ef, #567dd0);
+    text-decoration: none;
+}
+.msgBoxDIV {
+	MARGIN-LEFT: -283px; Z-INDEX: 1121
+	HEIGHT: 20px; 
+	POSITION: absolute; 
+	TEXT-ALIGN: center; 
+	PADDING-TOP: 2px; 
+	DISPLAY: none; 
+	TOP: 8px; 
+	WIDTH: 100%
+}
+.errmsg {
+	background: none repeat scroll 0 0 #EF8F00;
+	z-index: 99;
+	border-radius: 3px 3px 3px 3px;
+    color: #FFFFFF;
+    height: 20px;
+    line-height: 18px;
+    margin-left: 566px;
+    padding: 3px 24px;
+    white-space: nowrap;
+}
+
+
+.titlecheck {
+	width: 330px;
+	height: 188;
+	background: #ffffff;
+    border: 1px solid #AAAAAA;
+    border-radius: 5px 5px 7px 7px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+    outline: 0 none;
+    position: absolute;
+    left: 300px;
+    top: 90px;
+    text-align: left;
+    display: none;
+}
+.cddelete {
+	width: 355px;
+	height: 188;
+	background: #ffffff;
+    border: 1px solid #AAAAAA;
+    border-radius: 5px 5px 7px 7px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+    outline: 0 none;
+    position: absolute;
+    left: 300px;
+    top: 90px;
+    text-align: left;
+    display: none;
+}
+.ico_manage{
+	background: url("/mail/images/gray/mail.png") no-repeat -128px -80px;
+	width: 18px;
+	height: 16px;
+	float: left;
+	margin: 2px 1px 0 0;
+	padding:0px;
+}
+
+

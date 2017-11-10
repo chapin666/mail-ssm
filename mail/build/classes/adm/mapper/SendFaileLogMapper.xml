@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="adm.mapper.SendFaileLogMapper">
+	
+	<select id="selectSendFaileLogs" parameterType="SendFaileLog" resultType="SendFaileLog">
+	      select * from sendfailelog order by date desc LIMIT #{start},#{end}
+	</select>
+	
+	<select id="SendFaileLogsCount" resultType="int">
+	      select count(*) from sendfailelog
+	</select>
+	
+	
+	<!-- 根据条件查询  -->
+	<!-- 分页查询 -->	
+	<select id="selectTimeLog" parameterType="sendfailelog" resultType="sendfailelog">
+		select * from sendfailelog where date &gt;= #{startTime} and date &lt;= #{endTime} LIMIT #{start},#{end}
+	</select>
+	
+	<!-- 总记录 -->
+	<select id="logCount" resultType="int">
+	    select count(*) from sendfailelog where date &gt;=#{startTime} and date &lt;=#{endTime}
+	</select>
+	
+</mapper>

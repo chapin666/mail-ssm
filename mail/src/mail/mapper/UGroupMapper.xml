@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mail.mapper.UGroupMapper">
+	
+	<select id="checkNameExist" parameterType="UGroup" resultType="UGroup">
+		select * from ugroup where userid=#{userid} and name=#{name}
+	</select>
+	
+	<select id="getUGroup" parameterType="int" resultType="UGroup">
+		select * from ugroup where id=#{id}
+	</select>
+	
+	<select id="getUGroupList" parameterType="int" resultType="UGroup">
+		select * from ugroup where userid=#{userid}
+	</select>
+	
+	<update id="editUGroup" parameterType="UGroup">
+		update ugroup
+		<set>  
+			<if test="name!=null and name!='' ">name=#{name}</if>
+    	</set>
+        where id=#{id}
+	</update>
+	
+	<insert id="addUGroup" parameterType="UGroup">
+		insert into ugroup (userid,name) values (#{userid},#{name}) 
+	</insert>
+	
+	<delete id="deleteUGroup" parameterType="int">
+		delete from ugroup where id=#{id}
+	</delete>
+	
+	<delete id="delAll" parameterType="int">
+		delete from ugroup
+	</delete>
+	
+</mapper>

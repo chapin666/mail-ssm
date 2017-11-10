@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+    "http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts>
+	
+	<package name="Groups" extends="struts-default" namespace="/groups">
+
+		<action name="checkNameExist" class="groupsAction" method="checkNameExist">
+		</action>
+		
+		<action name="addGroups" class="groupsAction" method="addGroups">
+			<result name="success">/adm/page/groups/addgroups.jsp</result>
+		</action>
+		
+		<action name="doAddGroups" class="groupsAction" method="doAddGroups">
+			<result name="success" type="redirectAction">list.mail</result>
+		</action>
+		
+		<action name="doUpdateGroups" class="groupsAction" method="doUpdateGroups">
+			<result name="success" type="redirectAction">list.mail</result>
+		</action>
+		
+		<action name="ycGroups" class="groupsAction" method="ycGroups">
+			<result name="success" type="redirectAction">list.mail</result>
+		</action>
+		
+		<action name="editGroups" class="groupsAction" method="editGroups">
+			<result name="success" type="redirectAction">list.mail</result>
+		</action>
+		
+		<action name="doEditGroups" class="groupsAction" method="doEditGroups">
+			<result name="success">/adm/page/groups/editgroups.jsp</result>
+		</action>
+
+		<action name="list" class="groupsAction" method="list">
+			<result name="success">/adm/page/index/group.jsp</result>
+		</action>
+
+		<action name="toAddGroup" class="groupsAction" method="toAddGroup">
+			<result name="success">/adm/page/index/addgroup.jsp</result>
+		</action>
+
+		<action name="toUpdateGroup" class="groupsAction" method="toUpdateGroup">
+			<result name="success">/adm/page/index/updategroup.jsp</result>
+		</action>
+
+		<action name="deleteGroups" class="groupsAction" method="deleteGroups">
+			<result name="success" type="redirectAction">list.mail</result>
+		</action>
+
+	</package>
+		
+</struts>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+    "http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts>
+	
+	<package name="Member" extends="struts-default" namespace="/member">
+
+		<action name="checkUserNameExist" class="memberAction" method="checkUserNameExist">
+		</action>
+		
+		<action name="checkPass" class="memberAction" method="checkPass">
+		</action>
+		
+		<action name="checkPassword" class="memberAction" method="checkPassword">
+		</action>
+		
+		<action name="updatePassword" class="memberAction" method="updatePassword">
+		</action>
+		
+		<action name="toApdatePassword" class="memberAction" method="toApdatePassword">
+			<result name="success">/adm/page/index/password.jsp</result>
+		</action>
+		
+		<action name="addMember" class="memberAction" method="addMember">
+			<result name="success">/adm/page/index/addsubadmin.jsp</result>
+		</action>
+		
+		<action name="doAddMember" class="memberAction" method="doAddMember">
+			<result name="success" type="redirectAction">getMemberList.mail</result>
+		</action>
+		
+		<action name="editMember" class="memberAction" method="editMember">
+			<result name="success">/adm/page/index/updatesubadmin.jsp</result>
+		</action>
+		
+		<action name="doEditMember" class="memberAction" method="doEditMember">
+			<result name="success" type="redirectAction">getMemberList.mail</result>
+		</action>
+		
+		<action name="getMemberList" class="memberAction" method="getMemberList">
+			<result name="success">/adm/page/index/subadmin.jsp</result>
+		</action>
+
+		<action name="editMemberPass" class="memberAction" method="editMemberPass">
+			<result name="success">/adm/page/index/updatesubadminpassword.jsp</result>
+		</action>
+
+		<action name="deleteMember" class="memberAction" method="deleteMember">
+			<result name="success" type="redirectAction">
+				getMemberList.mail
+			</result>
+		</action>
+
+	</package>
+		
+</struts>

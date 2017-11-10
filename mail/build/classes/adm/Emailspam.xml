@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+    "http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts>
+
+	<package name="mailspams" extends="struts-default" namespace="/mailspams">
+		
+		<action name="mailspam" class="EmailspamAction" method="selectTraitlibs">
+			<result name="success">/adm/page/index/mailspam.jsp</result>
+		</action>
+		<!-- 删除特征库记录 -->
+		<action name="delTraitlibs" class="EmailspamAction" method="delTraitlibs">
+			<result name="success">/adm/page/index/mailspam.jsp</result>
+		</action>
+		
+		
+		<action name="mailspamlog" class="EmailspamAction" method="selectSendFaileLogs">
+			<result name="success">/adm/page/index/mailspamlog.jsp</result>
+		</action>
+		
+		<!-- 投递日志失败分析查询 -->
+		<action name="selectTimeLog" class="EmailspamAction" method="selectTimeLog">
+			<result name="success">/adm/page/index/mailspamlog.jsp</result>
+		</action>
+		
+		<action name="mailspamglobal" class="EmailspamAction" method="mailspamglobal">
+			<result name="success">/adm/page/index/mailspamglobal.jsp</result>
+		</action>
+		
+		
+		<action name="mailfilter1" class="EmailspamAction" method="spamlistwhite">
+			<result name="success">/adm/page/index/mailfilter1.jsp</result>
+		</action>
+		
+		
+		<action name="mailfilter2" class="EmailspamAction" method="spamlistblack">
+			<result name="success">/adm/page/index/mailfilter2.jsp</result>
+		</action>
+		
+		<!-- 关键字规则 -->
+		<action name="mailKeyWordRule" class="EmailspamAction" method="selectKeyWordRule">
+			<result name="success">/adm/page/index/mailKeyWordRule.jsp</result>
+		</action>
+		<!-- 根据关键字规则查询 -->
+		<action name="mailKeyMore" class="EmailspamAction" method="mailKeyMore">
+			<result name="success">/adm/page/index/mailKeyWordRule.jsp</result>
+		</action>
+		
+		<!-- 根据关键字删除记录 -->
+		<action name="delKeyWordRule" class="EmailspamAction" method="delKeyWordRule">
+			<result name="success" type="redirectAction">
+				mailKeyWordRule.mail
+			</result>
+		</action>
+		
+		<!-- 修改关键字规则状态 -->
+		<action name="updateState" class="EmailspamAction" method="updateState">
+			<result name="success" type="redirectAction">
+				mailKeyWordRule.mail
+			</result>
+		</action>
+		<!-- 添加关键字规则  -->
+		<action name="addKeyWordRule" class="EmailspamAction" method="addKeyWordRule">
+			<result name="success" type="redirectAction">
+				mailKeyWordRule.mail
+			</result>
+		</action>
+		
+		<action name="Addblacklist" class="EmailspamAction" method="Addblacklist">
+			<result name="success" type="redirectAction">mailfilter2.mail</result>
+		</action>
+		
+		<action name="Addwhitelist" class="EmailspamAction" method="Addwhitelist">
+			<result name="success" type="redirectAction">mailfilter1.mail</result>
+		</action>
+		
+	    <action name="deletespamlist1" class="EmailspamAction" method="deletespamlist">
+			<result name="success" type="redirectAction">mailfilter1.mail</result>
+		</action>
+		
+		<action name="deletespamlist2" class="EmailspamAction" method="deletespamlist">
+			<result name="success" type="redirectAction">mailfilter2.mail</result>
+		</action>
+		
+		<action name="deletes1" class="EmailspamAction" method="deletes">
+			<result name="success" type="redirectAction">mailfilter1.mail</result>
+		</action>
+		
+		<action name="deletes2" class="EmailspamAction" method="deletes">
+			<result name="success" type="redirectAction">mailfilter2.mail</result>
+		</action>
+		
+		<action name="deleteAll1" class="EmailspamAction" method="deleteAll">
+			<result name="success" type="redirectAction">mailfilter1.mail</result>
+		</action>
+		
+		<action name="deleteAll2" class="EmailspamAction" method="deleteAll">
+			<result name="success" type="redirectAction">mailfilter2.mail</result>
+		</action>
+		
+		<action name="mailtraitlib" class="EmailspamAction" method="selectTraitlibs">
+			<result name="success">/adm/page/index/mailspam.jsp</result>
+		</action>
+		
+
+	</package>
+		
+</struts>

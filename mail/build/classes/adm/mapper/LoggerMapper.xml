@@ -1,0 +1,261 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="adm.mapper.LoggerMapper">
+	
+	<insert id="addLogger" parameterType="Logger">
+		insert into logger
+		(types,
+		<if test="title != null and title != '' "> title, </if>
+		<if test="fmail != null and fmail != '' "> fmail, </if>
+		<if test="tmail != null and tmail != '' "> tmail, </if>
+		<if test="state != null and state != '' "> state, </if>
+		<if test="userid != null and userid != '' "> userid, </if>
+		<if test="username != null and username != '' "> username, </if>
+		<if test="odata != null and odata != '' "> odata, </if>
+		<if test="ips != null and ips != '' "> ips, </if>
+		time
+		) 
+		values 
+		(#{types},
+		<if test="title != null and title != '' "> #{title}, </if>
+		<if test="fmail != null and fmail != '' "> #{fmail}, </if>
+		<if test="tmail != null and tmail != '' "> #{tmail}, </if>
+		<if test="state != null and state != '' "> #{state}, </if>
+		<if test="userid != null and userid != '' "> #{userid}, </if>
+		<if test="username != null and username != '' "> #{username}, </if>
+		<if test="odata != null and odata != '' "> #{odata}, </if>
+		<if test="ips != null and ips != '' "> #{ips}, </if>
+		#{time}
+		) 
+	</insert>
+	
+	<delete id="deleteLogger" parameterType="String">
+		delete from logger where id in 
+		<foreach collection="array" item="ids"  open="(" separator="," close=")">  
+        	#{ids}
+     	</foreach> 
+	</delete>
+	
+	<select id="getLoggerTotal" parameterType="Logger" resultType="int">
+		select count(1) from logger
+		<trim prefix="WHERE" prefixOverrides="AND|OR">  
+			<if test="searchType == 1">
+				<if test="ftmail != null and ftmail != '' and ftmail != 'null'">
+					(fmail like '%${ftmail}%' or tmail like '%${ftmail}%' )
+				</if>
+		        <if test="title != null and title != '' and title != 'null'"> and title like '%${title}%' </if>
+		        <if test="types != null">
+		        	<if test="types != ''"> and types = #{types} </if>
+		        	<if test="types == ''"> and (types = '收信' or types = '发信') </if>
+		        </if>
+		        <if test="times != null and times != ''"> and time &gt;= #{times} </if>
+		        <if test="timex != null and timex != ''"> and time &lt;= #{timex} </if>
+			</if>
+			<if test="searchType == 2">
+		       (types like '%登录%' or types like '%退出%')
+		        <if test="username != null and username != '' and username != 'null'"> and username like '%${username}%' </if>
+		    </if>
+		    <if test="searchType == 4">
+		        types = '管理员登录' 
+		        <if test="username != null and username != '' and username != 'null'"> and username like '%${username}%' </if>
+		    </if>
+			<if test="searchType == 3">
+				types != '管理员登录' and types != '用户登录' and types != '安全退出' and types != '收信' and types != '发信'
+			</if>
+        </trim>
+	</select>
+	
+	<select id="getLoggerList" parameterType="Logger" resultType="Logger">
+		select * from (select t.* from logger t
+		<trim prefix="WHERE" prefixOverrides="AND|OR">  
+			<if test="searchType == 1">
+				<if test="ftmail != null and ftmail != '' and ftmail != 'null'">
+					(fmail like '%${ftmail}%' or tmail like '%${ftmail}%' )
+				</if>
+		        <if test="title != null and title != '' and title != 'null'"> and title like '%${title}%' </if>
+		        <if test="types != null">
+		        	<if test="types != ''"> and types = #{types} </if>
+		        	<if test="types == ''"> and (types = '收信' or types = '发信') </if>
+		        </if>
+		        <if test="times != null and times != ''"> and time &gt;= #{times} </if>
+		        <if test="timex != null and timex != ''"> and time &lt;= #{timex} </if>
+			</if>
+			<if test="searchType == 2">
+		        (types like '%登录%' or types like '%退出%')
+		        <if test="username != null and username != '' and username != 'null'"> and username like '%${username}%' </if>
+		   	</if>
+		   	<if test="searchType == 4">
+		        types = '管理员登录' 
+		        <if test="username != null and username != '' and username != 'null'"> and username like '%${username}%' </if>
+		    </if>
+			<if test="searchType == 3">
+				types != '管理员登录' and types != '用户登录' and types != '安全退出' and types != '收信' and types != '发信'
+			</if>
+        </trim>
+         order by time desc)a limit #{start},#{end}
+	</select>
+	
+	<!-- 全部统计 -->
+	<select id="emailAllCount" parameterType="Email" resultType="int">
+		select sum(c) from (
+			select count(*) c from email_recv r,emaildata_recv rd 
+				<trim prefix="WHERE" prefixOverrides="AND|OR"> 	
+					 r.mailid=rd.mailid	
+					<if test="frommail != null and frommail != '' and frommail != 'null'">
+						and (r.frommail like '%${frommail}%' or r.tomail like '%${frommail}%')
+					</if>
+			        <if test="title != null and title != '' and title != 'null'"> and rd.subject like '%${title}%' </if>
+			       
+			        <if test="times != null and times != ''"> and r.time &gt;= #{times} </if>
+			        <if test="timex != null and timex != ''"> and r.time &lt;= #{timex} </if>
+				</trim>
+			union all select count(*) c from email_send s,emaildata_send sd
+				<trim prefix="WHERE" prefixOverrides="AND|OR"> 	
+					 s.mailid=sd.mailid
+					<if test="frommail != null and frommail != '' and frommail != 'null'">
+						and (s.frommail like '%${frommail}%' or s.tomail like '%${frommail}%')
+					</if>
+			        <if test="title != null and title != '' and title != 'null'"> and sd.subject like '%${title}%' </if>
+			       
+			        <if test="times != null and times != ''"> and s.time &gt;= #{times} </if>
+			        <if test="timex != null and timex != ''"> and s.time &lt;= #{timex} </if>
+				</trim>
+			) s
+	</select>
+	
+	
+	
+	<!-- 全部查询 -->
+	<select id="getEmailAll" parameterType="Email" resultType="Email">		
+		select 1 as type,rd.`subject`, r.frommail,r.tomail,r.time,r.state from email_recv r,emaildata_recv rd 
+			<trim prefix="WHERE" prefixOverrides="AND|OR"> 	
+				 r.mailid=rd.mailid	
+				<if test="frommail != null and frommail != '' and frommail != 'null'">
+					and (r.frommail like '%${frommail}%' or r.tomail like '%${frommail}%')
+				</if>
+		        <if test="title != null and title != '' and title != 'null'"> and rd.subject like '%${title}%' </if>
+		       
+		        <if test="times != null and times != ''"> and r.time &gt;= #{times} </if>
+		        <if test="timex != null and timex != ''"> and r.time &lt;= #{timex} </if>
+			</trim>
+			union all select 2 as type,sd.`subject`, s.frommail,s.tomail,s.time,s.state from email_send s,emaildata_send sd
+			<trim prefix="WHERE" prefixOverrides="AND|OR"> 	
+				 s.mailid=sd.mailid
+				<if test="frommail != null and frommail != '' and frommail != 'null'">
+					and (s.frommail like '%${frommail}%' or s.tomail like '%${frommail}%')
+				</if>
+		        <if test="title != null and title != '' and title != 'null'"> and sd.subject like '%${title}%' </if>
+		       
+		        <if test="times != null and times != ''"> and s.time &gt;= #{times} </if>
+		        <if test="timex != null and timex != ''"> and s.time &lt;= #{timex} </if>
+			</trim>
+			order by time desc limit #{start},#{end}
+	</select>
+	
+	<!-- 收信统计 -->
+	<select id="emailRecvCount" parameterType="Email" resultType="int">
+		select count(*) from email_recv a,emaildata_recv b
+		<trim prefix="WHERE" prefixOverrides="AND|OR"> 	
+			a.mailid = b.mailid 		
+			<if test="frommail != null and frommail != '' and frommail != 'null'">
+				and (a.tomail like '%${frommail}%')
+			</if>
+	        <if test="title != null and title != '' and title != 'null'"> and b.subject like '%${title}%' </if>
+	       
+	        <if test="times != null and times != ''"> and time &gt;= #{times} </if>
+	        <if test="timex != null and timex != ''"> and time &lt;= #{timex} </if>
+		</trim>
+	</select>
+	
+	<!-- 收信查询 -->
+	<select id="getEmailRecv" parameterType="Email" resultType="Email">
+		select * from email_recv a,emaildata_recv b
+		<trim prefix="WHERE" prefixOverrides="AND|OR"> 
+			a.mailid = b.mailid 			
+			<if test="frommail != null and frommail != '' and frommail != 'null'">
+				and (a.tomail like '%${frommail}%')
+			</if>
+	        <if test="title != null and title != '' and title != 'null'"> and b.subject like '%${title}%' </if>
+	       
+	        <if test="times != null and times != ''"> and time &gt;= #{times} </if>
+	        <if test="timex != null and timex != ''"> and time &lt;= #{timex} </if>	        
+		</trim>
+		order by time desc limit #{start},#{end}
+	</select>
+	
+	
+	
+	<!-- 发信统计 -->
+	<select id="emailSendCount" parameterType="Email" resultType="int">
+		select count(*) from email_send a,emaildata_send b
+		<trim prefix="WHERE" prefixOverrides="AND|OR"> 	
+			a.mailid = b.mailid 		
+			<if test="frommail != null and frommail != '' and frommail != 'null'">
+				and (a.frommail like '%${frommail}%')
+			</if>
+	        <if test="title != null and title != '' and title != 'null'"> and b.subject like '%${title}%' </if>
+	       
+	        <if test="times != null and times != ''"> and time &gt;= #{times} </if>
+	        <if test="timex != null and timex != ''"> and time &lt;= #{timex} </if>
+		</trim>
+	</select>
+	
+	<!-- 发信查询 -->
+	<select id="getEmailSend" parameterType="Email" resultType="Email">
+		select * from email_send a,emaildata_send b
+		<trim prefix="WHERE" prefixOverrides="AND|OR"> 
+			a.mailid = b.mailid 			
+			<if test="frommail != null and frommail != '' and frommail != 'null'">
+				and (a.frommail like '%${frommail}%')
+			</if>
+	        <if test="title != null and title != '' and title != 'null'"> and b.subject like '%${title}%' </if>
+	       
+	        <if test="times != null and times != ''"> and time &gt;= #{times} </if>
+	        <if test="timex != null and timex != ''"> and time &lt;= #{timex} </if>	        
+		</trim>
+		order by time desc limit #{start},#{end}
+	</select>
+	
+	
+	
+	<select id="getLoggerUserTotal" parameterType="Logger" resultType="int">
+		select count(1) from (select 1 from logger 
+		<trim prefix="WHERE" prefixOverrides="AND|OR">  
+	        types = '用户登录' 
+	        <if test="time != null and time != ''"> and time &gt;= #{time} </if>
+	        <if test="day != null and day != ''"> and (To_Days(date_format(now(),'%Y-%c-%d'))-To_Days(date_format(time,'%Y-%c-%d')) &lt;= #{day}) </if>
+        </trim>
+        group by username )a
+	</select>
+	
+	<select id="getLoggerUserList" parameterType="Logger" resultType="Logger">
+		select * from (select max(time) time,username,ips from logger t 
+		<trim prefix="WHERE" prefixOverrides="AND|OR">  
+	        types = '用户登录' 
+	        <if test="time != null and time != ''"> and time &gt;= #{time} </if>
+	        <if test="day != null and day != ''"> and (To_Days(date_format(now(),'%Y-%c-%d'))-To_Days(date_format(time,'%Y-%c-%d')) &lt;= #{day}) </if>
+        </trim>
+        group by username order by time desc)a limit #{start},#{end}
+	</select>
+	
+	<select id="findLogger" parameterType="String" resultType="Logger">
+		select * from logger where id = #{id}
+	</select>
+	<!-- 发件统计查询 -->	
+	<select id="sendCount" parameterType="SendFaileLog" resultType="int">
+		select count(*) from (select count(*) from email_send		
+		<if test="startTime != null and startTime != ''">			 
+			where To_Days(date_format(#{startTime},'%Y-%c-%d')) &lt;= To_Days(date_format(time,'%Y-%c-%d'))
+		</if>
+		group by frommail) s
+	</select>
+	
+	<!-- 发件统计 -->
+	<select id="sendCountPage" parameterType="SendFaileLog" resultType="SendFaileLog">
+		select id,frommail,count(*) count from email_send		
+		<if test="startTime != null and startTime != ''">			 
+			where To_Days(date_format(#{startTime},'%Y-%c-%d')) &lt;= To_Days(date_format(time,'%Y-%c-%d'))
+		</if>
+		group by frommail order by count desc limit #{start},#{end}
+	</select>
+</mapper>

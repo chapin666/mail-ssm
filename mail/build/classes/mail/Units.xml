@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+    "http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts>
+	
+	<package name="Units" extends="struts-default" namespace="/units">
+
+		<action name="checkNameExist" class="unitsAction" method="checkNameExist">
+		</action>
+		
+		<action name="addUnits" class="unitsAction" method="addUnits">
+			<result name="success">/mail/page/units/addunits.jsp</result>
+		</action>
+		
+		<action name="doAddUnits" class="unitsAction" method="doAddUnits">
+			<result name="success">/mail/page/units/addunits.jsp</result>
+		</action>
+		
+		<action name="editUnits" class="unitsAction" method="editUnits">
+			<result name="success">/mail/page/units/editunits.jsp</result>
+		</action>
+		
+		<action name="doEditUnits" class="unitsAction" method="doEditUnits">
+			<result name="success">/mail/page/units/editunits.jsp</result>
+		</action>
+		
+		<action name="getUnitsList" class="unitsAction" method="getUnitsList">
+			<result name="success">/mail/page/units/unitslist.jsp</result>
+		</action>
+		
+		<action name="getUserByUnits" class="unitsAction" method="getUserByUnits">
+			<result name="success" type="redirectAction">
+				<param name="actionName">getContactList.html</param>
+				<param name="namespace">/contact</param>
+				<param name="uname">${#request.uname}</param>
+				<param name="unitid">${#request.unitid}</param>
+				<param name="id">${#request.id}</param>
+				<param name="usernames">${#request.usernames}</param>
+				<param name="userid">0</param>
+				
+				<param name="pagenow1">${#request.pagenow1}</param>
+				<param name="pagesize">${#request.pagesize}</param>
+				<param name="totalsize">${#request.totalsize}</param>
+				<param name="pagenum">${#request.pagenum}</param>
+			</result>
+		</action>
+
+		<action name="deleteUnits" class="unitsAction" method="deleteUnits">
+			<result name="success" type="redirectAction">
+				getUnitsList.mail
+			</result>
+		</action>
+
+	</package>
+		
+</struts>
